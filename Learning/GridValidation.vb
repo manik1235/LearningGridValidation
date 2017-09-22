@@ -11,6 +11,33 @@ Public Class GridValidation
 
     Const gaOPEN = "Open" ' The string in the grid array if the spot is open.
 
+    Private _width As Integer
+    ''' <summary>
+    '''   Gets or Sets the width of the Grid Array
+    ''' </summary>
+    ''' <returns>An integer representing the number of horizontal spots in the grid</returns>
+    Public Property Width As Integer
+        Get
+            Return _width
+        End Get
+        Set(value As Integer)
+            _width = value
+        End Set
+    End Property
+
+    Private _height As Integer
+    ''' <summary>
+    '''   Gets or sets the height of the Grid Array
+    ''' </summary>
+    ''' <returns>An integer representing the number of vertical spots in the grid</returns>
+    Public Property Height As Integer
+        Get
+            Return _height
+        End Get
+        Set(value As Integer)
+            _height = value
+        End Set
+    End Property
 
     Friend Sub InitializeGrid()
 
@@ -18,6 +45,11 @@ Public Class GridValidation
 
         Dim x As Integer
         Dim y As Integer
+
+        ' Assign the height and width properties based on the initial size of the array
+        Width = GridArray.GetUpperBound(1)
+        Height = GridArray.GetUpperBound(1)
+
 
         ' Make sure each grid element starts as "Open" (True)
         For x = 0 To GridArray.GetUpperBound(0)
@@ -56,6 +88,19 @@ Public Class GridValidation
 
         Return returnValue
 
+    End Function
+
+    ''' <summary>
+    '''   Returns the contents of the Array at the specified point
+    ''' </summary>
+    ''' <param name="x"></param>
+    ''' <param name="y"></param>
+    ''' <returns></returns>
+    Friend Function GetContents(x As Integer, y As Integer) As String ' Return type should be the same as the GridArray array type
+
+        Return GridArray(x, y)
+
+        'Throw New NotImplementedException()
     End Function
 
     ''' <summary>
