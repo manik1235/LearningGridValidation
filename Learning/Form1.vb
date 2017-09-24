@@ -1,6 +1,6 @@
 ﻿Option Explicit On
 Option Strict On
-
+Imports Learning
 
 Public Class Form1
     Dim GridItem As New GridValidation
@@ -63,17 +63,20 @@ Public Class Form1
         Dim x As Integer = 0
         Dim y As Integer = 0
 
-        Debug.Print("tick")
+        'Debug.Print("tick")
 
+
+        ' Update the grid display
         Dim mControl() As Control
-
         For x = 0 To GridItem.Width
             For y = 0 To GridItem.Height
                 mControl = TableLayoutPanel1.Controls.Find("GridLabel" & Trim(CStr(x)) & "," & Trim(CStr(y)), True)
                 mControl(0).Text = GridItem.GetContents(x, y)
-
+                'Stop
             Next
         Next
+
+
 
     End Sub
 
@@ -108,17 +111,43 @@ Public Class Form1
                 'TableLayoutPanel1.GetChildAtPoint(pt).Text = "x: " & CStr(x) & " y: " & CStr(y)
                 'TableLayoutPanel1.Controls.Item(i).Text = "x: " & CStr(TableLayoutPanel1.Controls.Item(i).Left) & " y: " & CStr(TableLayoutPanel1.Controls.Item(i).Top)
                 TableLayoutPanel1.Controls.Item(i).Name = "GridLabel" & Trim(CStr(x)) & "," & Trim(CStr(y)) ' You have to set the name property in order for it to have a key. The key is the name
-                TableLayoutPanel1.Controls.Item(i).Text = TableLayoutPanel1.Controls.Item(i).Name
-                Debug.Print(TableLayoutPanel1.Controls.Item(i).Name)
-                Debug.Print(CStr(TableLayoutPanel1.Controls.ContainsKey(TableLayoutPanel1.Controls.Item(i).Name)))
+                'TableLayoutPanel1.Controls.Item(i).Text = TableLayoutPanel1.Controls.Item(i).Name
+                'Debug.Print(TableLayoutPanel1.Controls.Item(i).Name)
+                'Debug.Print(CStr(TableLayoutPanel1.Controls.ContainsKey(TableLayoutPanel1.Controls.Item(i).Name)))
                 i += 1
             Next
         Next
 
-        'TableLayoutPanel1.Controls.Item(2).Text = "Initial Text"
+
+        ' Add features to the map
+        AddGridFeatures(GridItem)
 
 
-        ' Make sure they're all set to be the same size
+    End Sub
+
+    ''' <summary>
+    '''   Adds stuff to the map
+    ''' </summary>
+    ''' <param name="gridItem"></param>
+    Private Sub AddGridFeatures(gridItem As GridValidation)
+
+        ' Add walls to the outsides
+        Dim x As Integer
+        Dim y As Integer
+
+        For x = 0 To gridItem.Width
+            For y = 0 To gridItem.Height
+                '  (        first row                         )
+                If (x = 0 And (y >= 0 And y <= gridItem.Width)) Then
+
+                    Debug.Print("Wall Generator placement successful: " & CStr(x) & "," & CStr(y) & " " & CStr(gridItem.Add("Wall" & CStr(x) & "," & CStr(y), New Point(x, y))))
+                    'Stop
+                Else
+                    Debug.Print("Wall Generator skipping x,y:" & CStr(x) & " " & CStr(y))
+                End If
+            Next
+        Next
+
 
     End Sub
 End Class
