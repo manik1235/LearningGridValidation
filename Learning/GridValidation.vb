@@ -7,7 +7,7 @@ Public Class GridValidation
     ' Start with a 2 dimensional array the size of the (visible?) field
 
     ' Starting the grid as a 10x10
-    Dim GridArray(9, 9) As String ' value is gaOpen if open, otherwise it's the name of the Object in that spot.
+    Dim GridArray(9, 5) As String ' value is gaOpen if open, otherwise it's the name of the Object in that spot.
     ' Instead of being an array, it could just be a collection or dictionary or something, with a key of "x,y"
     ' which could easily be extended to "x,y,z" for example
 
@@ -50,7 +50,7 @@ Public Class GridValidation
         Dim y As Integer
 
         ' Assign the height and width properties based on the initial size of the array
-        Width = GridArray.GetUpperBound(1)
+        Width = GridArray.GetUpperBound(0)
         Height = GridArray.GetUpperBound(1)
 
 
@@ -169,5 +169,18 @@ Public Class GridValidation
 
         Return returnValue
 
+    End Function
+
+    ''' <summary>
+    '''   Adds an item to the grid in the newSpot. 
+    ''' </summary>
+    ''' <param name="whoKey">The name of the object being added</param>
+    ''' <param name="newSpotX">The x location of the addition</param>
+    ''' <param name="newSpotY">The y location of the addition</param>
+    ''' <param name="Overwrite">If True, replace the item in the newSpot with the new item</param>
+    ''' <returns></returns>
+    Friend Function Add(whoKey As String, newSpotX As Integer, newSpotY As Integer, Optional Overwrite As Boolean = False) As Boolean
+        ' Overloaded. Hopefully this is how you do it.
+        Return Add(whoKey, New Point(newSpotX, newSpotY), Overwrite)
     End Function
 End Class

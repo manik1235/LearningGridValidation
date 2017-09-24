@@ -60,24 +60,39 @@ Public Class Form1
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        Dim x As Integer = 0
-        Dim y As Integer = 0
 
         'Debug.Print("tick")
 
+        ' Update the grid display of the primary one
+        UpdateGridDisplay(TableLayoutPanel1)
+
+        ' Move Item
+        ' Apply the movement updown contrls
+        ' Move Car#1 around
+        Debug.Print("Car#1: " & CStr(GridItem.MoveTo("Car#1", GridItem.FindObject("Car#1") + New Size(CInt(NumericUpDown1.Value), CInt(NumericUpDown2.Value))))) ' This line gives an error saying it can't cast from point to size, but FindObject returns a point.... why?
+
+
+    End Sub
+
+    ''' <summary>
+    '''   Read the states of the grid and update the display.
+    '''   This display is a TableLayoutPanel control.
+    ''' </summary>
+    ''' <param name="TableLayoutPanelControl"></param>
+    Private Sub UpdateGridDisplay(TableLayoutPanelControl As TableLayoutPanel)
+        ' Overload this sub when appropriate for different grids to update, or differnt ways to do it.
+        Dim x As Integer = 0
+        Dim y As Integer = 0
 
         ' Update the grid display
         Dim mControl() As Control
         For x = 0 To GridItem.Width
             For y = 0 To GridItem.Height
-                mControl = TableLayoutPanel1.Controls.Find("GridLabel" & Trim(CStr(x)) & "," & Trim(CStr(y)), True)
+                mControl = TableLayoutPanelControl.Controls.Find("GridLabel" & Trim(CStr(x)) & "," & Trim(CStr(y)), True)
                 mControl(0).Text = GridItem.GetContents(x, y)
                 'Stop
             Next
         Next
-
-
-
     End Sub
 
     ''' <summary>
@@ -131,21 +146,42 @@ Public Class Form1
     ''' <param name="gridItem"></param>
     Private Sub AddGridFeatures(gridItem As GridValidation)
 
-        ' Add walls to the outsides
+
         Dim x As Integer
         Dim y As Integer
 
+        ' Add walls to the outsides
         For x = 0 To gridItem.Width
             For y = 0 To gridItem.Height
-                '  (        first row                         )    ( last row                                               )    (left wall                                  )    ( right wall                                             )
-                If (y = 0 And (x >= 0 And x <= gridItem.Width)) Or (y = gridItem.Height And (x >= 0 And x <= gridItem.Width)) Or (x = 0 And (y >= 0 And y <= gridItem.Height)) Or (x = gridItem.Width And (y >= 0 And y <= gridItem.Height)) Then
+                '  first row
+                '  last row
+                '  left wall
+                '  right wall
+                Debug.Print("Wall Coord: " & CStr(x) & "," & CStr(y))
+
+                If (y = 0 And (x >= 0 And x <= gridItem.Width)) Or
+                   (y = gridItem.Height And (x >= 0 And x <= gridItem.Width)) Or
+                   (x = 0 And (y >= 0 And y <= gridItem.Height)) Or
+                   (x = gridItem.Width And (y >= 0 And y <= gridItem.Height)) Then
                     Debug.Print("Wall Generator placement successful: " & CStr(x) & "," & CStr(y) & " " & CStr(gridItem.Add("Wall" & CStr(x) & "," & CStr(y), New Point(x, y))))
                 Else
                     Debug.Print("Wall Generator skipping x,y:" & CStr(x) & " " & CStr(y))
                 End If
+                'Stop
+
             Next
         Next
 
+        ' Add a VehicleClass Item
+        gridItem.Add("Car#1", 2, 2, False)
 
+
+    End Sub
+
+    Private Sub TextBox15_TextChanged(sender As Object, e As EventArgs) Handles TextBox15.TextChanged
+        If CInt(TextBox15.Text) > 0 Then
+            'Only adjust the timer interval if the interval being set is greater than zero
+            Timer1.Interval = CInt(TextBox15.Text)
+        End If
     End Sub
 End Class
