@@ -24,6 +24,19 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.TextBox15 = New System.Windows.Forms.TextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.NumericUpDown2 = New System.Windows.Forms.NumericUpDown()
+        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
+        Me.TextBox14 = New System.Windows.Forms.TextBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.TextBox12 = New System.Windows.Forms.TextBox()
+        Me.TextBox13 = New System.Windows.Forms.TextBox()
+        Me.TextBox11 = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -50,28 +63,16 @@ Partial Class Form1
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.TextBox11 = New System.Windows.Forms.TextBox()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.TextBox12 = New System.Windows.Forms.TextBox()
-        Me.TextBox13 = New System.Windows.Forms.TextBox()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.TextBox14 = New System.Windows.Forms.TextBox()
-        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
-        Me.NumericUpDown2 = New System.Windows.Forms.NumericUpDown()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.TextBox15 = New System.Windows.Forms.TextBox()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
-        Me.Panel2.SuspendLayout()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.Button4)
         Me.Panel1.Controls.Add(Me.TextBox15)
         Me.Panel1.Controls.Add(Me.Label17)
         Me.Panel1.Controls.Add(Me.Label15)
@@ -84,7 +85,6 @@ Partial Class Form1
         Me.Panel1.Controls.Add(Me.Label13)
         Me.Panel1.Controls.Add(Me.TextBox12)
         Me.Panel1.Controls.Add(Me.TextBox13)
-        Me.Panel1.Controls.Add(Me.Label11)
         Me.Panel1.Controls.Add(Me.TextBox11)
         Me.Panel1.Controls.Add(Me.Label10)
         Me.Panel1.Controls.Add(Me.Label8)
@@ -113,6 +113,114 @@ Partial Class Form1
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(629, 394)
         Me.Panel1.TabIndex = 23
+        '
+        'TextBox15
+        '
+        Me.TextBox15.Location = New System.Drawing.Point(503, 175)
+        Me.TextBox15.Name = "TextBox15"
+        Me.TextBox15.Size = New System.Drawing.Size(83, 20)
+        Me.TextBox15.TabIndex = 59
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(505, 152)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(71, 13)
+        Me.Label17.TabIndex = 58
+        Me.Label17.Text = "Timer Interval"
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(129, 222)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(12, 13)
+        Me.Label15.TabIndex = 57
+        Me.Label15.Text = "y"
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(15, 222)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(12, 13)
+        Me.Label16.TabIndex = 56
+        Me.Label16.Text = "x"
+        '
+        'NumericUpDown2
+        '
+        Me.NumericUpDown2.Location = New System.Drawing.Point(121, 238)
+        Me.NumericUpDown2.Maximum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.NumericUpDown2.Minimum = New Decimal(New Integer() {1, 0, 0, -2147483648})
+        Me.NumericUpDown2.Name = "NumericUpDown2"
+        Me.NumericUpDown2.Size = New System.Drawing.Size(97, 20)
+        Me.NumericUpDown2.TabIndex = 55
+        '
+        'NumericUpDown1
+        '
+        Me.NumericUpDown1.Location = New System.Drawing.Point(14, 238)
+        Me.NumericUpDown1.Maximum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.NumericUpDown1.Minimum = New Decimal(New Integer() {1, 0, 0, -2147483648})
+        Me.NumericUpDown1.Name = "NumericUpDown1"
+        Me.NumericUpDown1.Size = New System.Drawing.Size(97, 20)
+        Me.NumericUpDown1.TabIndex = 54
+        '
+        'TextBox14
+        '
+        Me.TextBox14.Location = New System.Drawing.Point(118, 203)
+        Me.TextBox14.Name = "TextBox14"
+        Me.TextBox14.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox14.TabIndex = 53
+        Me.TextBox14.Text = "Car#1"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(3, 206)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(112, 13)
+        Me.Label14.TabIndex = 52
+        Me.Label14.Text = "Name of Item to Move"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(123, 138)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(12, 13)
+        Me.Label12.TabIndex = 51
+        Me.Label12.Text = "y"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(9, 138)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(12, 13)
+        Me.Label13.TabIndex = 50
+        Me.Label13.Text = "x"
+        '
+        'TextBox12
+        '
+        Me.TextBox12.Location = New System.Drawing.Point(118, 154)
+        Me.TextBox12.Name = "TextBox12"
+        Me.TextBox12.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox12.TabIndex = 49
+        '
+        'TextBox13
+        '
+        Me.TextBox13.Location = New System.Drawing.Point(12, 154)
+        Me.TextBox13.Name = "TextBox13"
+        Me.TextBox13.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox13.TabIndex = 48
+        '
+        'TextBox11
+        '
+        Me.TextBox11.Location = New System.Drawing.Point(118, 114)
+        Me.TextBox11.Name = "TextBox11"
+        Me.TextBox11.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox11.TabIndex = 46
         '
         'Label10
         '
@@ -328,121 +436,14 @@ Partial Class Form1
         '
         Me.Timer1.Enabled = True
         '
-        'TextBox11
+        'Button4
         '
-        Me.TextBox11.Location = New System.Drawing.Point(118, 114)
-        Me.TextBox11.Name = "TextBox11"
-        Me.TextBox11.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox11.TabIndex = 46
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(15, 116)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(60, 13)
-        Me.Label11.TabIndex = 47
-        Me.Label11.Text = "Add Object"
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(123, 138)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(12, 13)
-        Me.Label12.TabIndex = 51
-        Me.Label12.Text = "y"
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(9, 138)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(12, 13)
-        Me.Label13.TabIndex = 50
-        Me.Label13.Text = "x"
-        '
-        'TextBox12
-        '
-        Me.TextBox12.Location = New System.Drawing.Point(118, 154)
-        Me.TextBox12.Name = "TextBox12"
-        Me.TextBox12.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox12.TabIndex = 49
-        '
-        'TextBox13
-        '
-        Me.TextBox13.Location = New System.Drawing.Point(12, 154)
-        Me.TextBox13.Name = "TextBox13"
-        Me.TextBox13.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox13.TabIndex = 48
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(3, 206)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(112, 13)
-        Me.Label14.TabIndex = 52
-        Me.Label14.Text = "Name of Item to Move"
-        '
-        'TextBox14
-        '
-        Me.TextBox14.Location = New System.Drawing.Point(118, 203)
-        Me.TextBox14.Name = "TextBox14"
-        Me.TextBox14.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox14.TabIndex = 53
-        '
-        'NumericUpDown1
-        '
-        Me.NumericUpDown1.Location = New System.Drawing.Point(14, 238)
-        Me.NumericUpDown1.Maximum = New Decimal(New Integer() {5, 0, 0, 0})
-        Me.NumericUpDown1.Minimum = New Decimal(New Integer() {5, 0, 0, -2147483648})
-        Me.NumericUpDown1.Name = "NumericUpDown1"
-        Me.NumericUpDown1.Size = New System.Drawing.Size(97, 20)
-        Me.NumericUpDown1.TabIndex = 54
-        '
-        'NumericUpDown2
-        '
-        Me.NumericUpDown2.Location = New System.Drawing.Point(121, 238)
-        Me.NumericUpDown2.Maximum = New Decimal(New Integer() {5, 0, 0, 0})
-        Me.NumericUpDown2.Minimum = New Decimal(New Integer() {5, 0, 0, -2147483648})
-        Me.NumericUpDown2.Name = "NumericUpDown2"
-        Me.NumericUpDown2.Size = New System.Drawing.Size(97, 20)
-        Me.NumericUpDown2.TabIndex = 55
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(129, 222)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(12, 13)
-        Me.Label15.TabIndex = 57
-        Me.Label15.Text = "y"
-        '
-        'Label16
-        '
-        Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(15, 222)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(12, 13)
-        Me.Label16.TabIndex = 56
-        Me.Label16.Text = "x"
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(505, 152)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(71, 13)
-        Me.Label17.TabIndex = 58
-        Me.Label17.Text = "Timer Interval"
-        '
-        'TextBox15
-        '
-        Me.TextBox15.Location = New System.Drawing.Point(503, 175)
-        Me.TextBox15.Name = "TextBox15"
-        Me.TextBox15.Size = New System.Drawing.Size(83, 20)
-        Me.TextBox15.TabIndex = 59
+        Me.Button4.Location = New System.Drawing.Point(20, 116)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(84, 22)
+        Me.Button4.TabIndex = 60
+        Me.Button4.Text = "Add Item"
+        Me.Button4.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -455,10 +456,10 @@ Partial Class Form1
         Me.Text = "Form1"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -500,8 +501,8 @@ Partial Class Form1
     Friend WithEvents Label13 As Label
     Friend WithEvents TextBox12 As TextBox
     Friend WithEvents TextBox13 As TextBox
-    Friend WithEvents Label11 As Label
     Friend WithEvents TextBox11 As TextBox
     Friend WithEvents TextBox15 As TextBox
     Friend WithEvents Label17 As Label
+    Friend WithEvents Button4 As Button
 End Class

@@ -68,8 +68,8 @@ Public Class Form1
 
         ' Move Item
         ' Apply the movement updown contrls
-        ' Move Car#1 around
-        Debug.Print("Car#1: " & CStr(GridItem.MoveTo("Car#1", GridItem.FindObject("Car#1") + New Size(CInt(NumericUpDown1.Value), CInt(NumericUpDown2.Value))))) ' This line gives an error saying it can't cast from point to size, but FindObject returns a point.... why?
+        ' Move whatever object is named in the textbox around
+        Debug.Print(TextBox14.Text & ": " & CStr(GridItem.MoveTo(TextBox14.Text, GridItem.FindObject(TextBox14.Text) + New Size(CInt(NumericUpDown1.Value), CInt(NumericUpDown2.Value))))) ' This line gives an error saying it can't cast from point to size, but FindObject returns a point.... why?
 
 
     End Sub
@@ -183,5 +183,9 @@ Public Class Form1
             'Only adjust the timer interval if the interval being set is greater than zero
             Timer1.Interval = CInt(TextBox15.Text)
         End If
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        GridItem.Add(TextBox11.Text, CInt(TextBox13.Text), CInt(TextBox12.Text))
     End Sub
 End Class
