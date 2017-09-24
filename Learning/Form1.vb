@@ -137,11 +137,9 @@ Public Class Form1
 
         For x = 0 To gridItem.Width
             For y = 0 To gridItem.Height
-                '  (        first row                         )
-                If (x = 0 And (y >= 0 And y <= gridItem.Width)) Then
-
+                '  (        first row                         )    ( last row                                               )    (left wall                                  )    ( right wall                                             )
+                If (y = 0 And (x >= 0 And x <= gridItem.Width)) Or (y = gridItem.Height And (x >= 0 And x <= gridItem.Width)) Or (x = 0 And (y >= 0 And y <= gridItem.Height)) Or (x = gridItem.Width And (y >= 0 And y <= gridItem.Height)) Then
                     Debug.Print("Wall Generator placement successful: " & CStr(x) & "," & CStr(y) & " " & CStr(gridItem.Add("Wall" & CStr(x) & "," & CStr(y), New Point(x, y))))
-                    'Stop
                 Else
                     Debug.Print("Wall Generator skipping x,y:" & CStr(x) & " " & CStr(y))
                 End If
