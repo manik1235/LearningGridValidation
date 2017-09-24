@@ -119,8 +119,8 @@ Public Class Form1
 
 
         ' Add a label to each cell
-        For x = 0 To GridItem.Width
-            For y = 0 To GridItem.Height
+        For y = 0 To GridItem.Height
+            For x = 0 To GridItem.Width
                 TableLayoutPanel1.Controls.Add(New Label)
                 'pt = New Point(x + 1, y + 1)
                 'TableLayoutPanel1.GetChildAtPoint(pt).Text = "x: " & CStr(x) & " y: " & CStr(y)
