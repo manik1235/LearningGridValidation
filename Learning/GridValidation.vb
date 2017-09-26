@@ -121,9 +121,11 @@ Public Class GridValidation
         Dim x As Integer ' Counter for the first array dimension
         Dim y As Integer ' Counter for the second array dimension
 
-        Dim returnPoint As Point = Nothing ' Holds the return value of the point. Might make this a collection if objects take up more than one space....
+        Dim returnPoint As New Point  ' Holds the return value of the point. Might make this a collection if objects take up more than one space....
 
-        returnPoint = New Point(-1, -1)
+        'returnPointString = New Point 'should default to isEmpty
+        If returnPoint.IsEmpty = False Then Stop
+
 
         ' Look through the grid until it finds the whoKey it's looking for
         For x = 0 To GridArray.GetUpperBound(0)

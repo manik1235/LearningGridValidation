@@ -5,6 +5,7 @@ Imports Learning
 Public Class Form1
     Dim GridItem As New GridValidation
 
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         GridItem.InitializeGrid()
 
@@ -32,16 +33,19 @@ Public Class Form1
 
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs)
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         ' Find Object
 
         Dim pt As New Point
 
         pt = GridItem.FindObject(TextBox8.Text)
 
-        TextBox9.Text = CStr(pt.X)
-        TextBox10.Text = CStr(pt.Y)
-
+        If pt.IsEmpty Then
+            TextBox9.Text = TextBox8.Text & " Not Found"
+        Else
+            TextBox9.Text = CStr(pt.X)
+            TextBox10.Text = CStr(pt.Y)
+        End If
 
     End Sub
 
@@ -108,35 +112,17 @@ Public Class Form1
         Dim i As Integer = 0
         Dim pt As New Point
 
-
-        ' Test the GetChildAtPoint thing
-        'Debug.Print(TableLayoutPanel2.GetChildAtPoint(New Point(5, 5)).Name)
-
-        'TableLayoutPanel2.Controls.GetChildIndex()
-
-
-        'TableLayoutPanel2.g
-
-
         ' Add a label to each cell
         For y = 0 To GridItem.Height
             For x = 0 To GridItem.Width
                 TableLayoutPanel1.Controls.Add(New Label)
-                'pt = New Point(x + 1, y + 1)
-                'TableLayoutPanel1.GetChildAtPoint(pt).Text = "x: " & CStr(x) & " y: " & CStr(y)
-                'TableLayoutPanel1.Controls.Item(i).Text = "x: " & CStr(TableLayoutPanel1.Controls.Item(i).Left) & " y: " & CStr(TableLayoutPanel1.Controls.Item(i).Top)
                 TableLayoutPanel1.Controls.Item(i).Name = "GridLabel" & Trim(CStr(x)) & "," & Trim(CStr(y)) ' You have to set the name property in order for it to have a key. The key is the name
-                'TableLayoutPanel1.Controls.Item(i).Text = TableLayoutPanel1.Controls.Item(i).Name
-                'Debug.Print(TableLayoutPanel1.Controls.Item(i).Name)
-                'Debug.Print(CStr(TableLayoutPanel1.Controls.ContainsKey(TableLayoutPanel1.Controls.Item(i).Name)))
                 i += 1
             Next
         Next
 
-
         ' Add features to the map
         AddGridFeatures(GridItem)
-
 
     End Sub
 
@@ -145,7 +131,6 @@ Public Class Form1
     ''' </summary>
     ''' <param name="gridItem"></param>
     Private Sub AddGridFeatures(gridItem As GridValidation)
-
 
         Dim x As Integer
         Dim y As Integer
@@ -188,4 +173,6 @@ Public Class Form1
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         GridItem.Add(TextBox11.Text, CInt(TextBox13.Text), CInt(TextBox12.Text))
     End Sub
+
+
 End Class

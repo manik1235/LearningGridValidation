@@ -24,6 +24,7 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.TextBox15 = New System.Windows.Forms.TextBox()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
@@ -63,7 +64,6 @@ Partial Class Form1
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Button4 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -113,6 +113,15 @@ Partial Class Form1
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(629, 394)
         Me.Panel1.TabIndex = 23
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(20, 116)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(84, 22)
+        Me.Button4.TabIndex = 60
+        Me.Button4.Text = "Add Item"
+        Me.Button4.UseVisualStyleBackColor = True
         '
         'TextBox15
         '
@@ -371,7 +380,7 @@ Partial Class Form1
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(9, 81)
+        Me.Label1.Location = New System.Drawing.Point(115, 10)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(96, 13)
         Me.Label1.TabIndex = 27
@@ -435,15 +444,7 @@ Partial Class Form1
         'Timer1
         '
         Me.Timer1.Enabled = True
-        '
-        'Button4
-        '
-        Me.Button4.Location = New System.Drawing.Point(20, 116)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(84, 22)
-        Me.Button4.TabIndex = 60
-        Me.Button4.Text = "Add Item"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.Timer1.Interval = Global.Learning.My.MySettings.Default.Timer1AppSetting
         '
         'Form1
         '
