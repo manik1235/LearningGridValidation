@@ -79,9 +79,14 @@ Public Class MainForm
     End Function
 
     Private Function ConvertTestToImage(curTile As String) As String
-        If curTile = "Wall" Then
+        If Strings.Left(curTile, 4) = "Wall" Then
             Return "Wall"
+        ElseIf Strings.Left(curTile, 3) = "Car" Then
+            Return "CircleCar"
+        Else
+            Stop
         End If
+        Stop
     End Function
 
     ''' <summary>

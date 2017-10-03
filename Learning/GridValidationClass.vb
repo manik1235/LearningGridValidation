@@ -153,7 +153,16 @@ Public Class GridValidationClass
 
     Friend Function IsSpaceOpen(pt As Point) As Boolean
         ' Takes a point on the grid. Returns True if Open, False if closed
-        Return (GridArray(pt.X, pt.Y) = gaOPEN) ' Returns True if it's equal to the Open symbol.
+        ' By default, say it's closed.
+        ' If it errors, say it's closed
+
+        Try
+            Return (GridArray(pt.X, pt.Y) = gaOPEN) ' Returns True if it's equal to the Open symbol.
+        Catch
+            Return False
+        End Try
+
+        Return False
 
     End Function
 
