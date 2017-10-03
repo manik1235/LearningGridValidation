@@ -78,6 +78,7 @@ Partial Class MainForm
         '
         'TickTimer
         '
+        Me.TickTimer.Enabled = True
         Me.TickTimer.Interval = 1000
         '
         'MainForm

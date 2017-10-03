@@ -223,21 +223,5 @@ Public Class TestForm1
             GridItem1 = Me.GridItem
         End If
 
-
-
-
-
-        Try
-            Debug.Print(testForm.Item(0).Name)
-        Catch
-        End Try
-        Try
-            Debug.Print(testForm.Item(1).Name)
-        Catch
-        End Try
-        Try
-            Debug.Print(testForm.Item(2).Name)
-        Catch
-        End Try
     End Sub
 End Class

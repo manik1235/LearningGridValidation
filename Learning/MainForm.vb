@@ -96,8 +96,11 @@ Public Class MainForm
     ''' <param name="e"></param>
     Private Sub TickTimer_Tick(sender As Object, e As EventArgs) Handles TickTimer.Tick
 
+        'Me.InvokePaintBackground(BackgroundPanel, CType(e, PaintEventArgs))
 
+        'BackgroundPanel_Paint(sender, CType(e, PaintEventArgs))
 
+        BackgroundPanel.Refresh()
 
     End Sub
 
