@@ -129,7 +129,7 @@ Partial Class TestForm1
         Me.Panel1.Controls.Add(Me.TextBox1)
         Me.Panel1.Controls.Add(Me.Button2)
         Me.Panel1.Controls.Add(Me.Button1)
-        Me.Panel1.Location = New System.Drawing.Point(8, 440)
+        Me.Panel1.Location = New System.Drawing.Point(12, 12)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(860, 203)
         Me.Panel1.TabIndex = 23
@@ -507,9 +507,9 @@ Partial Class TestForm1
         'Panel2
         '
         Me.Panel2.Controls.Add(Me.TableLayoutPanel1)
-        Me.Panel2.Location = New System.Drawing.Point(8, 12)
+        Me.Panel2.Location = New System.Drawing.Point(12, 221)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1281, 422)
+        Me.Panel2.Size = New System.Drawing.Size(891, 421)
         Me.Panel2.TabIndex = 24
         '
         'TableLayoutPanel1
@@ -520,7 +520,7 @@ Partial Class TestForm1
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35.0!))
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(44, 43)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(4, 3)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 3
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))

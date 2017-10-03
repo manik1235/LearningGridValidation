@@ -32,6 +32,13 @@ Public Class GridValidationClass
     End Property
 
     Private _height As Integer
+
+    Public Sub New()
+        ' This is what runs when you create a new one. 
+        ' Set the initial values for the grid
+        InitializeGrid()
+    End Sub
+
     ''' <summary>
     '''   Gets or sets the height of the Grid Array
     ''' </summary>
