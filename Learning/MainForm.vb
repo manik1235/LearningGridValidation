@@ -1,4 +1,9 @@
-﻿Option Strict On
+﻿' 2017-10-03
+' Version 0.0.1 
+' Items can be added, removed, and move. Images work
+
+
+Option Strict On
 Option Explicit On
 
 
