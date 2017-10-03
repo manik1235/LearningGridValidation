@@ -1,6 +1,7 @@
 ﻿Option Explicit On
 Option Strict On
 
+
 ''' <summary>
 '''   Use a grid to detect collisions and keep track of vehicles or other things like walls
 ''' </summary>
