@@ -2,7 +2,7 @@
 Option Strict On
 Imports Learning
 
-Public Class Form1
+Public Class TestForm1
     Dim GridItem As New GridValidationClass
 
 
@@ -189,5 +189,12 @@ Public Class Form1
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
         GridItem.RemoveItemByPoint(CInt(TextBox17.Text), CInt(TextBox18.Text))
+    End Sub
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        'textbox19
+        ' Open the form named in the textbox
+
+        MainForm.Show()
     End Sub
 End Class

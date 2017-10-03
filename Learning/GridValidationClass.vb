@@ -1,7 +1,9 @@
 ﻿Option Explicit On
 Option Strict On
 
-
+''' <summary>
+'''   Use a grid to detect collisions and keep track of vehicles or other things like walls
+''' </summary>
 Public Class GridValidationClass
     ' Use a grid to detect collisions
     ' Start with a 2 dimensional array the size of the (visible?) field
@@ -10,6 +12,7 @@ Public Class GridValidationClass
     Dim GridArray(9, 5) As String ' value is gaOpen if open, otherwise it's the name of the Object in that spot.
     ' Instead of being an array, it could just be a collection or dictionary or something, with a key of "x,y"
     ' which could easily be extended to "x,y,z" for example
+    ' I think changing this structure to a collection is going to help a lot on size
 
 
     Const gaOPEN = "Open" ' The string in the grid array if the spot is open.

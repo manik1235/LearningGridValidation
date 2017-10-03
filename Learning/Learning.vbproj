@@ -73,11 +73,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.vb" />
-    <Compile Include="Form1.vb">
+    <Compile Include="MainForm.Designer.vb">
+      <DependentUpon>MainForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="TestForm1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestForm1.Designer.vb">
+      <DependentUpon>TestForm1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GridValidationClass.vb" />
@@ -102,8 +108,11 @@
     <Compile Include="VehicleForGridClass.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestForm1.resx">
+      <DependentUpon>TestForm1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

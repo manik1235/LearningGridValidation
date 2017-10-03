@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Form1
+Partial Class TestForm1
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -24,6 +24,14 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.TextBox16 = New System.Windows.Forms.TextBox()
+        Me.TextBox17 = New System.Windows.Forms.TextBox()
+        Me.TextBox18 = New System.Windows.Forms.TextBox()
+        Me.Button5 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.TextBox15 = New System.Windows.Forms.TextBox()
         Me.Label17 = New System.Windows.Forms.Label()
@@ -64,14 +72,8 @@ Partial Class Form1
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.Label18 = New System.Windows.Forms.Label()
-        Me.Label19 = New System.Windows.Forms.Label()
-        Me.TextBox16 = New System.Windows.Forms.TextBox()
-        Me.TextBox17 = New System.Windows.Forms.TextBox()
-        Me.TextBox18 = New System.Windows.Forms.TextBox()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
+        Me.TextBox19 = New System.Windows.Forms.TextBox()
+        Me.Button7 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -80,6 +82,8 @@ Partial Class Form1
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.TextBox19)
+        Me.Panel1.Controls.Add(Me.Button7)
         Me.Panel1.Controls.Add(Me.Button6)
         Me.Panel1.Controls.Add(Me.Label11)
         Me.Panel1.Controls.Add(Me.Label18)
@@ -127,8 +131,74 @@ Partial Class Form1
         Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Location = New System.Drawing.Point(8, 440)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(629, 394)
+        Me.Panel1.Size = New System.Drawing.Size(860, 203)
         Me.Panel1.TabIndex = 23
+        '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(597, 157)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(100, 40)
+        Me.Button6.TabIndex = 68
+        Me.Button6.Text = "Remove Object by point"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(760, 154)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(12, 13)
+        Me.Label11.TabIndex = 67
+        Me.Label11.Text = "y"
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(706, 157)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(12, 13)
+        Me.Label18.TabIndex = 66
+        Me.Label18.Text = "x"
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(703, 110)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(69, 13)
+        Me.Label19.TabIndex = 65
+        Me.Label19.Text = "Object Name"
+        '
+        'TextBox16
+        '
+        Me.TextBox16.Location = New System.Drawing.Point(706, 126)
+        Me.TextBox16.Name = "TextBox16"
+        Me.TextBox16.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox16.TabIndex = 64
+        '
+        'TextBox17
+        '
+        Me.TextBox17.Location = New System.Drawing.Point(709, 170)
+        Me.TextBox17.Name = "TextBox17"
+        Me.TextBox17.Size = New System.Drawing.Size(44, 20)
+        Me.TextBox17.TabIndex = 63
+        '
+        'TextBox18
+        '
+        Me.TextBox18.Location = New System.Drawing.Point(755, 170)
+        Me.TextBox18.Name = "TextBox18"
+        Me.TextBox18.Size = New System.Drawing.Size(30, 20)
+        Me.TextBox18.TabIndex = 62
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(597, 112)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(100, 39)
+        Me.Button5.TabIndex = 61
+        Me.Button5.Text = "Remove Object by name"
+        Me.Button5.UseVisualStyleBackColor = True
         '
         'Button4
         '
@@ -158,7 +228,7 @@ Partial Class Form1
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(129, 222)
+        Me.Label15.Location = New System.Drawing.Point(720, 63)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(12, 13)
         Me.Label15.TabIndex = 57
@@ -167,7 +237,7 @@ Partial Class Form1
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(15, 222)
+        Me.Label16.Location = New System.Drawing.Point(606, 63)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(12, 13)
         Me.Label16.TabIndex = 56
@@ -175,7 +245,7 @@ Partial Class Form1
         '
         'NumericUpDown2
         '
-        Me.NumericUpDown2.Location = New System.Drawing.Point(121, 238)
+        Me.NumericUpDown2.Location = New System.Drawing.Point(712, 79)
         Me.NumericUpDown2.Maximum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.NumericUpDown2.Minimum = New Decimal(New Integer() {1, 0, 0, -2147483648})
         Me.NumericUpDown2.Name = "NumericUpDown2"
@@ -184,7 +254,7 @@ Partial Class Form1
         '
         'NumericUpDown1
         '
-        Me.NumericUpDown1.Location = New System.Drawing.Point(14, 238)
+        Me.NumericUpDown1.Location = New System.Drawing.Point(605, 79)
         Me.NumericUpDown1.Maximum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.NumericUpDown1.Minimum = New Decimal(New Integer() {1, 0, 0, -2147483648})
         Me.NumericUpDown1.Name = "NumericUpDown1"
@@ -193,7 +263,7 @@ Partial Class Form1
         '
         'TextBox14
         '
-        Me.TextBox14.Location = New System.Drawing.Point(118, 203)
+        Me.TextBox14.Location = New System.Drawing.Point(709, 44)
         Me.TextBox14.Name = "TextBox14"
         Me.TextBox14.Size = New System.Drawing.Size(100, 20)
         Me.TextBox14.TabIndex = 53
@@ -202,7 +272,7 @@ Partial Class Form1
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(3, 206)
+        Me.Label14.Location = New System.Drawing.Point(594, 47)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(112, 13)
         Me.Label14.TabIndex = 52
@@ -446,15 +516,17 @@ Partial Class Form1
         '
         Me.TableLayoutPanel1.AutoSize = True
         Me.TableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.TableLayoutPanel1.ColumnCount = 2
+        Me.TableLayoutPanel1.ColumnCount = 3
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(48, 44)
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35.0!))
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(44, 43)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 2
+        Me.TableLayoutPanel1.RowCount = 3
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(0, 0)
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(35, 20)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'Timer1
@@ -462,80 +534,31 @@ Partial Class Form1
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = Global.Learning.My.MySettings.Default.Timer1AppSetting
         '
-        'Label11
+        'TextBox19
         '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(471, 245)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(12, 13)
-        Me.Label11.TabIndex = 67
-        Me.Label11.Text = "y"
+        Me.TextBox19.Location = New System.Drawing.Point(703, 10)
+        Me.TextBox19.Name = "TextBox19"
+        Me.TextBox19.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox19.TabIndex = 70
+        Me.TextBox19.Text = "MainForm"
         '
-        'Label18
+        'Button7
         '
-        Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(357, 248)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(12, 13)
-        Me.Label18.TabIndex = 66
-        Me.Label18.Text = "x"
+        Me.Button7.Location = New System.Drawing.Point(597, 10)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(75, 23)
+        Me.Button7.TabIndex = 69
+        Me.Button7.Text = "Open Form"
+        Me.Button7.UseVisualStyleBackColor = True
         '
-        'Label19
-        '
-        Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(354, 201)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(69, 13)
-        Me.Label19.TabIndex = 65
-        Me.Label19.Text = "Object Name"
-        '
-        'TextBox16
-        '
-        Me.TextBox16.Location = New System.Drawing.Point(357, 217)
-        Me.TextBox16.Name = "TextBox16"
-        Me.TextBox16.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox16.TabIndex = 64
-        '
-        'TextBox17
-        '
-        Me.TextBox17.Location = New System.Drawing.Point(360, 261)
-        Me.TextBox17.Name = "TextBox17"
-        Me.TextBox17.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox17.TabIndex = 63
-        '
-        'TextBox18
-        '
-        Me.TextBox18.Location = New System.Drawing.Point(466, 261)
-        Me.TextBox18.Name = "TextBox18"
-        Me.TextBox18.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox18.TabIndex = 62
-        '
-        'Button5
-        '
-        Me.Button5.Location = New System.Drawing.Point(248, 203)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(100, 39)
-        Me.Button5.TabIndex = 61
-        Me.Button5.Text = "Remove Object by name"
-        Me.Button5.UseVisualStyleBackColor = True
-        '
-        'Button6
-        '
-        Me.Button6.Location = New System.Drawing.Point(248, 248)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(100, 40)
-        Me.Button6.TabIndex = 68
-        Me.Button6.Text = "Remove Object by point"
-        Me.Button6.UseVisualStyleBackColor = True
-        '
-        'Form1
+        'TestForm1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1354, 733)
+        Me.ClientSize = New System.Drawing.Size(1354, 654)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
-        Me.Name = "Form1"
+        Me.Name = "TestForm1"
         Me.Text = "Form1"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
@@ -596,4 +619,6 @@ Partial Class Form1
     Friend WithEvents TextBox18 As TextBox
     Friend WithEvents Button5 As Button
     Friend WithEvents Button6 As Button
+    Friend WithEvents TextBox19 As TextBox
+    Friend WithEvents Button7 As Button
 End Class
