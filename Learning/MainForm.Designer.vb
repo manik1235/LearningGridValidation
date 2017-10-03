@@ -23,11 +23,13 @@ Partial Class MainForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
         Me.BasePanel = New System.Windows.Forms.Panel()
-        Me.PlayingFieldPanel = New System.Windows.Forms.Panel()
         Me.ControlFieldPanel = New System.Windows.Forms.Panel()
+        Me.PlayingFieldPanel = New System.Windows.Forms.Panel()
         Me.BackgroundPanel = New System.Windows.Forms.Panel()
         Me.TileImageList = New System.Windows.Forms.ImageList(Me.components)
+        Me.TickTimer = New System.Windows.Forms.Timer(Me.components)
         Me.BasePanel.SuspendLayout()
         Me.PlayingFieldPanel.SuspendLayout()
         Me.SuspendLayout()
@@ -42,6 +44,13 @@ Partial Class MainForm
         Me.BasePanel.Size = New System.Drawing.Size(874, 537)
         Me.BasePanel.TabIndex = 0
         '
+        'ControlFieldPanel
+        '
+        Me.ControlFieldPanel.Location = New System.Drawing.Point(12, 12)
+        Me.ControlFieldPanel.Name = "ControlFieldPanel"
+        Me.ControlFieldPanel.Size = New System.Drawing.Size(272, 279)
+        Me.ControlFieldPanel.TabIndex = 1
+        '
         'PlayingFieldPanel
         '
         Me.PlayingFieldPanel.Controls.Add(Me.BackgroundPanel)
@@ -49,13 +58,6 @@ Partial Class MainForm
         Me.PlayingFieldPanel.Name = "PlayingFieldPanel"
         Me.PlayingFieldPanel.Size = New System.Drawing.Size(520, 520)
         Me.PlayingFieldPanel.TabIndex = 0
-        '
-        'ControlFieldPanel
-        '
-        Me.ControlFieldPanel.Location = New System.Drawing.Point(12, 12)
-        Me.ControlFieldPanel.Name = "ControlFieldPanel"
-        Me.ControlFieldPanel.Size = New System.Drawing.Size(272, 279)
-        Me.ControlFieldPanel.TabIndex = 1
         '
         'BackgroundPanel
         '
@@ -66,9 +68,17 @@ Partial Class MainForm
         '
         'TileImageList
         '
-        Me.TileImageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit
-        Me.TileImageList.ImageSize = New System.Drawing.Size(50, 50)
+        Me.TileImageList.ImageStream = CType(resources.GetObject("TileImageList.ImageStream"), System.Windows.Forms.ImageListStreamer)
         Me.TileImageList.TransparentColor = System.Drawing.Color.Transparent
+        Me.TileImageList.Images.SetKeyName(0, "50x50_White.png")
+        Me.TileImageList.Images.SetKeyName(1, "50x50_Open.png")
+        Me.TileImageList.Images.SetKeyName(2, "50x50_Wall.png")
+        Me.TileImageList.Images.SetKeyName(3, "50x50_Forest.png")
+        Me.TileImageList.Images.SetKeyName(4, "50x50_CircleCar.png")
+        '
+        'TickTimer
+        '
+        Me.TickTimer.Interval = 1000
         '
         'MainForm
         '
@@ -89,4 +99,5 @@ Partial Class MainForm
     Friend WithEvents PlayingFieldPanel As Panel
     Friend WithEvents BackgroundPanel As Panel
     Friend WithEvents TileImageList As ImageList
+    Friend WithEvents TickTimer As Timer
 End Class
