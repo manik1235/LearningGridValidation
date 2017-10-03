@@ -2,7 +2,7 @@
 Option Strict On
 
 
-Public Class GridValidation
+Public Class GridValidationClass
     ' Use a grid to detect collisions
     ' Start with a 2 dimensional array the size of the (visible?) field
 
@@ -184,5 +184,37 @@ Public Class GridValidation
     Friend Function Add(whoKey As String, newSpotX As Integer, newSpotY As Integer, Optional Overwrite As Boolean = False) As Boolean
         ' Overloaded. Hopefully this is how you do it.
         Return Add(whoKey, New Point(newSpotX, newSpotY), Overwrite)
+    End Function
+
+    ''' <summary>
+    '''   Removes the item whoKey from the grid
+    ''' </summary>
+    ''' <param name="whoKey">The name of the item to remove</param>
+    ''' <returns>Returns True if Remove is successful, False if not.</returns>
+    Friend Function RemoveItemByName(whoKey As String) As Boolean
+        'Dim x As Integer
+        'Dim y As Integer
+        Dim pt As New Point
+
+        pt = FindObject(whoKey)
+
+        If pt.IsEmpty Then
+            ' Nothing was found
+            Return False
+        Else
+            GridArray(pt.X, pt.Y) = gaOPEN
+            Return True
+        End If
+
+
+    End Function
+
+
+    Friend Function RemoveItemByPoint(x As Integer, y As Integer) As Boolean
+
+        ' set the passed point to Open, return True because it can't really fail
+        GridArray(x, y) = gaOPEN
+        Return True
+
     End Function
 End Class

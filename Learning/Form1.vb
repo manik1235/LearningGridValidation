@@ -3,7 +3,7 @@ Option Strict On
 Imports Learning
 
 Public Class Form1
-    Dim GridItem As New GridValidation
+    Dim GridItem As New GridValidationClass
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -73,8 +73,17 @@ Public Class Form1
         ' Move Item
         ' Apply the movement updown contrls
         ' Move whatever object is named in the textbox around
-        Debug.Print(TextBox14.Text & ": " & CStr(GridItem.MoveTo(TextBox14.Text, GridItem.FindObject(TextBox14.Text) + New Size(CInt(NumericUpDown1.Value), CInt(NumericUpDown2.Value))))) ' This line gives an error saying it can't cast from point to size, but FindObject returns a point.... why?
+        Dim MoveSucceeded As Boolean
+        MoveSucceeded = GridItem.MoveTo(TextBox14.Text, GridItem.FindObject(TextBox14.Text) + New Size(CInt(NumericUpDown1.Value), CInt(NumericUpDown2.Value))) ' This line gives an error saying it can't cast from point to size, but FindObject returns a point.... why?
+        If MoveSucceeded Then
+            'Don't change anything
+        Else
+            ' The move failed, pick a new random direction
+            Dim rRand As New Random
 
+            NumericUpDown1.Value = rRand.Next(-1, 2)
+            NumericUpDown2.Value = rRand.Next(-1, 2)
+        End If
 
     End Sub
 
@@ -130,7 +139,7 @@ Public Class Form1
     '''   Adds stuff to the map
     ''' </summary>
     ''' <param name="gridItem"></param>
-    Private Sub AddGridFeatures(gridItem As GridValidation)
+    Private Sub AddGridFeatures(gridItem As GridValidationClass)
 
         Dim x As Integer
         Dim y As Integer
@@ -174,5 +183,11 @@ Public Class Form1
         GridItem.Add(TextBox11.Text, CInt(TextBox13.Text), CInt(TextBox12.Text))
     End Sub
 
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        GridItem.RemoveItemByName(TextBox16.Text)
+    End Sub
 
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        GridItem.RemoveItemByPoint(CInt(TextBox17.Text), CInt(TextBox18.Text))
+    End Sub
 End Class
