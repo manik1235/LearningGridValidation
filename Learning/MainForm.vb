@@ -10,6 +10,7 @@ Public Class MainForm
     Friend BackgroundGrid As New GridValidationClass ' Carries the grid information, for what is on the grid, in the particular locations.
     Dim BackgroundGraphic As Graphics ' Carries the graphics to draw on for the background
     Dim ImageOrder As New Dictionary(Of String, Integer) ' Holds the string name and cooresponding index of the image in the ImageList
+    Dim OldBackgroundHash As Integer ' Holds the hash of the background to detect changes and the need to update
 
     Private Sub PlayingFieldPanel_Paint(sender As Object, e As PaintEventArgs) Handles PlayingFieldPanel.Paint
         ' Playing field panel is where the trains move and where the grid gets painted
@@ -100,7 +101,19 @@ Public Class MainForm
 
         'BackgroundPanel_Paint(sender, CType(e, PaintEventArgs))
 
-        BackgroundPanel.Refresh()
+        ' This needs to be way more efficient
+        ' Update it if the hash is different?
+
+        If (BackgroundGrid.GetHashCode = OldBackgroundHash) Then
+            ' No update required
+            'Stop
+            Debug.Print("No Update Required")
+        Else
+            ' The background panel has changed
+            BackgroundPanel.Refresh()
+            'OldBackgroundHash = BackgroundPanel.GetHashCode
+            OldBackgroundHash = BackgroundGrid.GetHashCode
+        End If
 
     End Sub
 

@@ -53,6 +53,27 @@ Public Class GridValidationClass
         End Set
     End Property
 
+    Dim _TimeLastChanged As New DateTime  ' The local variable that stores the most recent timestamp
+    ''' <summary>
+    '''   Gets the last time a change to the grid was effected (UTC).
+    '''   The TimeStamp is automatically updated when there is any change to the grid.
+    ''' </summary>
+    ''' <returns>The DateTime of the last time it was stamped.</returns>
+    Public Function GetTimeStamp() As DateTime
+        Return _TimeLastChanged
+    End Function
+
+    ''' <summary>
+    '''   Sets the TimeStamp to the current date and time (UTC).
+    '''   The TimeStamp is automatically updated when there is any change to the grid.
+    ''' </summary>
+    ''' <returns>The DateTime that was set.</returns>
+    Public Function SetTimeStamp() As DateTime
+        _TimeLastChanged = DateTime.UtcNow
+        Return _TimeLastChanged
+    End Function
+
+
     Friend Sub InitializeGrid()
 
         'Dim GridElement As Boolean
@@ -71,9 +92,9 @@ Public Class GridValidationClass
                 GridArray(x, y) = gaOPEN
             Next
         Next
-        'GridArray(2, 3) = True
 
-        'Debug.Print(CStr(GridArray(2, 3)))
+        ' Update the TimeStamp to indicate change to the grid
+        SetTimeStamp()
     End Sub
 
     ''' <summary>
@@ -99,6 +120,8 @@ Public Class GridValidationClass
             GridArray(currentSpot.X, currentSpot.Y) = gaOPEN
             GridArray(newSpot.X, newSpot.Y) = whoKey
             returnValue = True
+            ' Update the TimeStamp to indicate change to the grid
+            SetTimeStamp()
         Else
             ' unsuccessful move, return False
             returnValue = False
@@ -184,6 +207,8 @@ Public Class GridValidationClass
             ' The space is open, or Overwrite is enabled. Place the object.
             GridArray(newSpot.X, newSpot.Y) = whoKey
             returnValue = True
+            ' Update the TimeStamp to indicate change to the grid
+            SetTimeStamp()
         Else
             ' The space is full. Return False
             returnValue = False
@@ -223,6 +248,8 @@ Public Class GridValidationClass
             Return False
         Else
             GridArray(pt.X, pt.Y) = gaOPEN
+            ' Update the TimeStamp to indicate change to the grid
+            SetTimeStamp()
             Return True
         End If
 
@@ -234,6 +261,8 @@ Public Class GridValidationClass
 
         ' set the passed point to Open, return True because it can't really fail
         GridArray(x, y) = gaOPEN
+        ' Update the TimeStamp to indicate change to the grid
+        SetTimeStamp()
         Return True
 
     End Function

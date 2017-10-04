@@ -14,6 +14,11 @@ Public Class TestForm1
         End Set
     End Property
 
+
+
+
+
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         GridItem1.InitializeGrid()
 
