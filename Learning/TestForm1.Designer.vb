@@ -24,6 +24,8 @@ Partial Class TestForm1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.TextBox19 = New System.Windows.Forms.TextBox()
+        Me.Button7 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label18 = New System.Windows.Forms.Label()
@@ -72,8 +74,7 @@ Partial Class TestForm1
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.TextBox19 = New System.Windows.Forms.TextBox()
-        Me.Button7 = New System.Windows.Forms.Button()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Panel1.SuspendLayout()
         CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -82,6 +83,7 @@ Partial Class TestForm1
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.CheckBox1)
         Me.Panel1.Controls.Add(Me.TextBox19)
         Me.Panel1.Controls.Add(Me.Button7)
         Me.Panel1.Controls.Add(Me.Button6)
@@ -133,6 +135,23 @@ Partial Class TestForm1
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(860, 203)
         Me.Panel1.TabIndex = 23
+        '
+        'TextBox19
+        '
+        Me.TextBox19.Location = New System.Drawing.Point(703, 10)
+        Me.TextBox19.Name = "TextBox19"
+        Me.TextBox19.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox19.TabIndex = 70
+        Me.TextBox19.Text = "MainForm"
+        '
+        'Button7
+        '
+        Me.Button7.Location = New System.Drawing.Point(597, 10)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(75, 23)
+        Me.Button7.TabIndex = 69
+        Me.Button7.Text = "Open Form"
+        Me.Button7.UseVisualStyleBackColor = True
         '
         'Button6
         '
@@ -534,22 +553,15 @@ Partial Class TestForm1
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = Global.Learning.My.MySettings.Default.Timer1AppSetting
         '
-        'TextBox19
+        'CheckBox1
         '
-        Me.TextBox19.Location = New System.Drawing.Point(703, 10)
-        Me.TextBox19.Name = "TextBox19"
-        Me.TextBox19.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox19.TabIndex = 70
-        Me.TextBox19.Text = "MainForm"
-        '
-        'Button7
-        '
-        Me.Button7.Location = New System.Drawing.Point(597, 10)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(75, 23)
-        Me.Button7.TabIndex = 69
-        Me.Button7.Text = "Open Form"
-        Me.Button7.UseVisualStyleBackColor = True
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(12, 178)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(168, 17)
+        Me.CheckBox1.TabIndex = 72
+        Me.CheckBox1.Text = "Overwrite current tile Contents"
+        Me.CheckBox1.UseVisualStyleBackColor = True
         '
         'TestForm1
         '
@@ -621,4 +633,5 @@ Partial Class TestForm1
     Friend WithEvents Button6 As Button
     Friend WithEvents TextBox19 As TextBox
     Friend WithEvents Button7 As Button
+    Friend WithEvents CheckBox1 As CheckBox
 End Class

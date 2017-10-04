@@ -83,11 +83,15 @@ Public Class TestForm1
         ' Update the grid display of the primary one
         UpdateGridDisplay(TableLayoutPanel1)
 
+        'MoveRandom(TextBox14.Text)
+    End Sub
+
+    Private Sub MoveRandom(ItemName As String)
         ' Move Item
         ' Apply the movement updown contrls
         ' Move whatever object is named in the textbox around
         Dim MoveSucceeded As Boolean
-        MoveSucceeded = GridItem1.MoveTo(TextBox14.Text, GridItem1.FindObject(TextBox14.Text) + New Size(CInt(NumericUpDown1.Value), CInt(NumericUpDown2.Value))) ' This line gives an error saying it can't cast from point to size, but FindObject returns a point.... why?
+        MoveSucceeded = GridItem1.MoveTo(ItemName, GridItem1.FindObject(ItemName) + New Size(CInt(NumericUpDown1.Value), CInt(NumericUpDown2.Value))) ' This line gives an error saying it can't cast from point to size, but FindObject returns a point.... why?
         If MoveSucceeded Then
             'Don't change anything
         Else
@@ -97,7 +101,6 @@ Public Class TestForm1
             NumericUpDown1.Value = rRand.Next(-1, 2)
             NumericUpDown2.Value = rRand.Next(-1, 2)
         End If
-
     End Sub
 
     ''' <summary>
@@ -193,7 +196,7 @@ Public Class TestForm1
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        GridItem1.Add(TextBox11.Text, CInt(TextBox13.Text), CInt(TextBox12.Text))
+        GridItem1.Add(TextBox11.Text, CInt(TextBox13.Text), CInt(TextBox12.Text), CheckBox1.Checked)
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
@@ -227,6 +230,10 @@ Public Class TestForm1
             'Default to me
             GridItem1 = Me.GridItem
         End If
+
+    End Sub
+
+    Private Sub NumericUpDown1_ValueChanged(sender As Object, e As EventArgs) Handles NumericUpDown1.ValueChanged
 
     End Sub
 End Class
