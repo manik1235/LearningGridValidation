@@ -83,7 +83,11 @@ Public Class TestForm1
         ' Update the grid display of the primary one
         UpdateGridDisplay(TableLayoutPanel1)
 
-        'MoveRandom(TextBox14.Text)
+        If CheckBox2.Checked Then
+            ' Only move the thing if the checkbox is checked.
+            MoveRandom(TextBox14.Text)
+        End If
+
     End Sub
 
     Private Sub MoveRandom(ItemName As String)
@@ -233,7 +237,5 @@ Public Class TestForm1
 
     End Sub
 
-    Private Sub NumericUpDown1_ValueChanged(sender As Object, e As EventArgs) Handles NumericUpDown1.ValueChanged
 
-    End Sub
 End Class

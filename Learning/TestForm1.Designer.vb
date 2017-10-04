@@ -24,6 +24,8 @@ Partial Class TestForm1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.TextBox19 = New System.Windows.Forms.TextBox()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
@@ -42,7 +44,6 @@ Partial Class TestForm1
         Me.NumericUpDown2 = New System.Windows.Forms.NumericUpDown()
         Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
         Me.TextBox14 = New System.Windows.Forms.TextBox()
-        Me.Label14 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.TextBox12 = New System.Windows.Forms.TextBox()
@@ -74,7 +75,6 @@ Partial Class TestForm1
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Panel1.SuspendLayout()
         CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -83,6 +83,7 @@ Partial Class TestForm1
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.CheckBox2)
         Me.Panel1.Controls.Add(Me.CheckBox1)
         Me.Panel1.Controls.Add(Me.TextBox19)
         Me.Panel1.Controls.Add(Me.Button7)
@@ -102,7 +103,6 @@ Partial Class TestForm1
         Me.Panel1.Controls.Add(Me.NumericUpDown2)
         Me.Panel1.Controls.Add(Me.NumericUpDown1)
         Me.Panel1.Controls.Add(Me.TextBox14)
-        Me.Panel1.Controls.Add(Me.Label14)
         Me.Panel1.Controls.Add(Me.Label12)
         Me.Panel1.Controls.Add(Me.Label13)
         Me.Panel1.Controls.Add(Me.TextBox12)
@@ -135,6 +135,26 @@ Partial Class TestForm1
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(860, 203)
         Me.Panel1.TabIndex = 23
+        '
+        'CheckBox2
+        '
+        Me.CheckBox2.AutoSize = True
+        Me.CheckBox2.Location = New System.Drawing.Point(561, 47)
+        Me.CheckBox2.Name = "CheckBox2"
+        Me.CheckBox2.Size = New System.Drawing.Size(142, 17)
+        Me.CheckBox2.TabIndex = 73
+        Me.CheckBox2.Text = "Name of Object to Move"
+        Me.CheckBox2.UseVisualStyleBackColor = True
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(12, 178)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(168, 17)
+        Me.CheckBox1.TabIndex = 72
+        Me.CheckBox1.Text = "Overwrite current tile Contents"
+        Me.CheckBox1.UseVisualStyleBackColor = True
         '
         'TextBox19
         '
@@ -287,15 +307,6 @@ Partial Class TestForm1
         Me.TextBox14.Size = New System.Drawing.Size(100, 20)
         Me.TextBox14.TabIndex = 53
         Me.TextBox14.Text = "Car#1"
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(594, 47)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(112, 13)
-        Me.Label14.TabIndex = 52
-        Me.Label14.Text = "Name of Item to Move"
         '
         'Label12
         '
@@ -528,7 +539,7 @@ Partial Class TestForm1
         Me.Panel2.Controls.Add(Me.TableLayoutPanel1)
         Me.Panel2.Location = New System.Drawing.Point(12, 221)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(891, 421)
+        Me.Panel2.Size = New System.Drawing.Size(1228, 421)
         Me.Panel2.TabIndex = 24
         '
         'TableLayoutPanel1
@@ -552,16 +563,6 @@ Partial Class TestForm1
         '
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = Global.Learning.My.MySettings.Default.Timer1AppSetting
-        '
-        'CheckBox1
-        '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(12, 178)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(168, 17)
-        Me.CheckBox1.TabIndex = 72
-        Me.CheckBox1.Text = "Overwrite current tile Contents"
-        Me.CheckBox1.UseVisualStyleBackColor = True
         '
         'TestForm1
         '
@@ -614,7 +615,6 @@ Partial Class TestForm1
     Friend WithEvents NumericUpDown2 As NumericUpDown
     Friend WithEvents NumericUpDown1 As NumericUpDown
     Friend WithEvents TextBox14 As TextBox
-    Friend WithEvents Label14 As Label
     Friend WithEvents Label12 As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents TextBox12 As TextBox
@@ -634,4 +634,5 @@ Partial Class TestForm1
     Friend WithEvents TextBox19 As TextBox
     Friend WithEvents Button7 As Button
     Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents CheckBox2 As CheckBox
 End Class
