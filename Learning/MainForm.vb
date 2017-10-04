@@ -1,6 +1,6 @@
 ﻿Option Strict On
 Option Explicit On
-
+Imports Learning
 
 ''' <summary>
 '''   The train game First Draft
@@ -19,6 +19,43 @@ Public Class MainForm
     Private Sub BackgroundPanel_Paint(sender As Object, e As PaintEventArgs) Handles BackgroundPanel.Paint
         ' This is the grid that gets painted
 
+        ' Redraw the entire grid
+        DrawEntireGrid(BackgroundGrid, BackgroundGraphic, New Size(TileImageList.ImageSize.Width, TileImageList.ImageSize.Height))
+
+        ' Redraw a specific tile
+        Dim x As Integer = 3
+        Dim y As Integer = 3
+        DrawGridTile(BackgroundGrid, BackgroundGraphic, New Size(TileImageList.ImageSize.Width, TileImageList.ImageSize.Height), New Point(x, y))
+
+
+
+    End Sub
+
+    ''' <summary>
+    '''   Updates a single tile only, represented by the TileLocation point, relative to the passed graphic
+    ''' </summary>
+    ''' <param name="DrawGrid">The Grid from which to read data</param>
+    ''' <param name="DrawGraphic">The Graphic to draw on</param>
+    ''' <param name="TileSize">The size of the tiles</param>
+    ''' <param name="TileLocation">The grid point to update</param>
+    Private Sub DrawGridTile(DrawGrid As GridValidationClass, DrawGraphic As Graphics, TileSize As Size, TileLocation As Point)
+
+        Dim curTile As String
+
+
+        ' Get the current tile and look up what image it is
+        curTile = DrawGrid.GetContents(TileLocation.X, TileLocation.Y)
+        TileImageList.Draw(DrawGraphic, TileLocation.X * TileSize.Width, TileLocation.Y * TileSize.Height, ImageIndexByName(curTile))
+
+    End Sub
+
+    ''' <summary>
+    ''' Draw (or redraw) the entire grid
+    ''' </summary>
+    ''' <param name="DrawGrid">The Grid to read.</param>
+    ''' <param name="DrawGraphic">The Graphics to write to/modify.</param>
+    ''' <param name="TileSize">The Size of the individual tiles</param>
+    Private Sub DrawEntireGrid(DrawGrid As GridValidationClass, DrawGraphic As Graphics, TileSize As Size)
         ' Draw the corresponding image based on the grid contents.
 
         Dim x As Integer
@@ -26,18 +63,14 @@ Public Class MainForm
 
         Dim curTile As String
 
-        For x = 0 To BackgroundGrid.Width
-            For y = 0 To BackgroundGrid.Height
+        For x = 0 To DrawGrid.Width
+            For y = 0 To DrawGrid.Height
                 ' Get the current tile and look up what image it is
-                curTile = BackgroundGrid.GetContents(x, y)
-                TileImageList.Draw(BackgroundGraphic, x * TileImageList.ImageSize.Width, y * TileImageList.ImageSize.Height, ImageIndexByName(curTile))
+                curTile = DrawGrid.GetContents(x, y)
+                TileImageList.Draw(DrawGraphic, x * TileSize.Width, y * TileSize.Height, ImageIndexByName(curTile))
 
             Next
         Next
-
-
-
-
     End Sub
 
     Private Sub InitializeImageDictionary()

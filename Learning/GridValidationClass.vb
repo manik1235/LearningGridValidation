@@ -14,6 +14,14 @@ Public Class GridValidationClass
     ' Instead of being an array, it could just be a collection or dictionary or something, with a key of "x,y"
     ' which could easily be extended to "x,y,z" for example
     ' I think changing this structure to a collection is going to help a lot on size
+    ' Replacing the grid with a collection? A dictionary?
+    Dim GridDictionary As Dictionary(Of Point, String)
+    ' The Key is the point on the grid, the string is what is there. The key needs to be unique.... well not really 
+    ' because it'll return a collection of objects if it's not...
+    ' If nothing is found, then the spot is empty.
+    ' I can keep track of the Min and Max spaces that exist to size the entire thing?
+
+
 
 
     Const gaOPEN = "Open" ' The string in the grid array if the spot is open.
