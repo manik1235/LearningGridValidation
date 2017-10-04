@@ -1,9 +1,10 @@
 ﻿Option Explicit On
 Option Strict On
-
+Imports Learning
 
 Public Class Form1
     Dim GridItem As New GridValidation
+
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         GridItem.InitializeGrid()
@@ -32,16 +33,19 @@ Public Class Form1
 
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs)
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         ' Find Object
 
         Dim pt As New Point
 
         pt = GridItem.FindObject(TextBox8.Text)
 
-        TextBox9.Text = CStr(pt.X)
-        TextBox10.Text = CStr(pt.Y)
-
+        If pt.IsEmpty Then
+            TextBox9.Text = TextBox8.Text & " Not Found"
+        Else
+            TextBox9.Text = CStr(pt.X)
+            TextBox10.Text = CStr(pt.Y)
+        End If
 
     End Sub
 
@@ -60,21 +64,39 @@ Public Class Form1
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+
+        'Debug.Print("tick")
+
+        ' Update the grid display of the primary one
+        UpdateGridDisplay(TableLayoutPanel1)
+
+        ' Move Item
+        ' Apply the movement updown contrls
+        ' Move whatever object is named in the textbox around
+        Debug.Print(TextBox14.Text & ": " & CStr(GridItem.MoveTo(TextBox14.Text, GridItem.FindObject(TextBox14.Text) + New Size(CInt(NumericUpDown1.Value), CInt(NumericUpDown2.Value))))) ' This line gives an error saying it can't cast from point to size, but FindObject returns a point.... why?
+
+
+    End Sub
+
+    ''' <summary>
+    '''   Read the states of the grid and update the display.
+    '''   This display is a TableLayoutPanel control.
+    ''' </summary>
+    ''' <param name="TableLayoutPanelControl"></param>
+    Private Sub UpdateGridDisplay(TableLayoutPanelControl As TableLayoutPanel)
+        ' Overload this sub when appropriate for different grids to update, or differnt ways to do it.
         Dim x As Integer = 0
         Dim y As Integer = 0
 
-        Debug.Print("tick")
-
+        ' Update the grid display
         Dim mControl() As Control
-
         For x = 0 To GridItem.Width
             For y = 0 To GridItem.Height
-                mControl = TableLayoutPanel1.Controls.Find("GridLabel" & Trim(CStr(x)) & "," & Trim(CStr(y)), True)
+                mControl = TableLayoutPanelControl.Controls.Find("GridLabel" & Trim(CStr(x)) & "," & Trim(CStr(y)), True)
                 mControl(0).Text = GridItem.GetContents(x, y)
-
+                'Stop
             Next
         Next
-
     End Sub
 
     ''' <summary>
@@ -90,35 +112,67 @@ Public Class Form1
         Dim i As Integer = 0
         Dim pt As New Point
 
-
-        ' Test the GetChildAtPoint thing
-        'Debug.Print(TableLayoutPanel2.GetChildAtPoint(New Point(5, 5)).Name)
-
-        'TableLayoutPanel2.Controls.GetChildIndex()
-
-
-        'TableLayoutPanel2.g
-
-
         ' Add a label to each cell
-        For x = 0 To GridItem.Width
-            For y = 0 To GridItem.Height
+        For y = 0 To GridItem.Height
+            For x = 0 To GridItem.Width
                 TableLayoutPanel1.Controls.Add(New Label)
-                'pt = New Point(x + 1, y + 1)
-                'TableLayoutPanel1.GetChildAtPoint(pt).Text = "x: " & CStr(x) & " y: " & CStr(y)
-                'TableLayoutPanel1.Controls.Item(i).Text = "x: " & CStr(TableLayoutPanel1.Controls.Item(i).Left) & " y: " & CStr(TableLayoutPanel1.Controls.Item(i).Top)
                 TableLayoutPanel1.Controls.Item(i).Name = "GridLabel" & Trim(CStr(x)) & "," & Trim(CStr(y)) ' You have to set the name property in order for it to have a key. The key is the name
-                TableLayoutPanel1.Controls.Item(i).Text = TableLayoutPanel1.Controls.Item(i).Name
-                Debug.Print(TableLayoutPanel1.Controls.Item(i).Name)
-                Debug.Print(CStr(TableLayoutPanel1.Controls.ContainsKey(TableLayoutPanel1.Controls.Item(i).Name)))
                 i += 1
             Next
         Next
 
-        'TableLayoutPanel1.Controls.Item(2).Text = "Initial Text"
-
-
-        ' Make sure they're all set to be the same size
+        ' Add features to the map
+        AddGridFeatures(GridItem)
 
     End Sub
+
+    ''' <summary>
+    '''   Adds stuff to the map
+    ''' </summary>
+    ''' <param name="gridItem"></param>
+    Private Sub AddGridFeatures(gridItem As GridValidation)
+
+        Dim x As Integer
+        Dim y As Integer
+
+        ' Add walls to the outsides
+        For x = 0 To gridItem.Width
+            For y = 0 To gridItem.Height
+                '  first row
+                '  last row
+                '  left wall
+                '  right wall
+                Debug.Print("Wall Coord: " & CStr(x) & "," & CStr(y))
+
+                If (y = 0 And (x >= 0 And x <= gridItem.Width)) Or
+                   (y = gridItem.Height And (x >= 0 And x <= gridItem.Width)) Or
+                   (x = 0 And (y >= 0 And y <= gridItem.Height)) Or
+                   (x = gridItem.Width And (y >= 0 And y <= gridItem.Height)) Then
+                    Debug.Print("Wall Generator placement successful: " & CStr(x) & "," & CStr(y) & " " & CStr(gridItem.Add("Wall" & CStr(x) & "," & CStr(y), New Point(x, y))))
+                Else
+                    Debug.Print("Wall Generator skipping x,y:" & CStr(x) & " " & CStr(y))
+                End If
+                'Stop
+
+            Next
+        Next
+
+        ' Add a VehicleClass Item
+        gridItem.Add("Car#1", 2, 2, False)
+
+
+    End Sub
+
+    Private Sub TextBox15_TextChanged(sender As Object, e As EventArgs) Handles TextBox15.TextChanged
+        If CInt(TextBox15.Text) > 0 Then
+            'Only adjust the timer interval if the interval being set is greater than zero
+            Timer1.Interval = CInt(TextBox15.Text)
+        End If
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        GridItem.Add(TextBox11.Text, CInt(TextBox13.Text), CInt(TextBox12.Text))
+    End Sub
+
+
 End Class
