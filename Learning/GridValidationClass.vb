@@ -10,37 +10,91 @@ Public Class GridValidationClass
     ' Start with a 2 dimensional array the size of the (visible?) field
 
     ' Starting the grid as a 10x10
-    Dim GridArray(9, 5) As String ' value is gaOpen if open, otherwise it's the name of the Object in that spot.
+    Dim GridArray As GridStructure ' value is gaOpen if open, otherwise it's the name of the Object in that spot.
     ' Instead of being an array, it could just be a collection or dictionary or something, with a key of "x,y"
     ' which could easily be extended to "x,y,z" for example
     ' I think changing this structure to a collection is going to help a lot on size
     ' Replacing the grid with a collection? A dictionary?
-    Dim GridDictionary As Dictionary(Of Point, String)
+    Dim ThisGrid As GridStructure
+
     ' The Key is the point on the grid, the string is what is there. The key needs to be unique.... well not really 
     ' because it'll return a collection of objects if it's not...
     ' If nothing is found, then the spot is empty.
     ' I can keep track of the Min and Max spaces that exist to size the entire thing?
+    Private Structure GridStructure
+        Dim GridDictionary As Dictionary(Of Point, String)
+        Private _minX As Integer
+        Private _minY As Integer
+        Private _maxX As Integer
+        Private _maxY As Integer
+        Private _width As Integer
+        Private _height As Integer
+
+        Public Property MinX As Integer
+            Get
+                Return _minX
+            End Get
+            Set(value As Integer)
+                _minX = value
+            End Set
+        End Property
+
+        Public Property MinY As Integer
+            Get
+                Return _minY
+            End Get
+            Set(value As Integer)
+                _minY = value
+                _height = MaxY - MinY
+            End Set
+        End Property
+
+        Public Property MaxX As Integer
+            Get
+                Return _maxX
+            End Get
+            Set(value As Integer)
+                _maxX = value
+                _width = _maxX - _minX
+            End Set
+        End Property
+
+        Public Property MaxY As Integer
+            Get
+                Return _maxY
+            End Get
+            Set(value As Integer)
+                _maxY = value
+                _height = _maxY - MinY
+            End Set
+        End Property
+
+        Public Property Width As Integer
+            Get
+                Return _width
+            End Get
+            Set(value As Integer)
+                _width = value
+                _maxX = MinX + Width
+            End Set
+        End Property
+
+        Public Property Height As Integer
+            Get
+                Return _height
+            End Get
+            Set(value As Integer)
+                _height = value
+                _maxY = MinY + Height
+            End Set
+        End Property
+    End Structure
 
 
 
 
     Const gaOPEN = "Open" ' The string in the grid array if the spot is open.
 
-    Private _width As Integer
-    ''' <summary>
-    '''   Gets or Sets the width of the Grid Array
-    ''' </summary>
-    ''' <returns>An integer representing the number of horizontal spots in the grid</returns>
-    Public Property Width As Integer
-        Get
-            Return _width
-        End Get
-        Set(value As Integer)
-            _width = value
-        End Set
-    End Property
-
-    Private _height As Integer
 
     Public Sub New()
         ' This is what runs when you create a new one. 
@@ -48,18 +102,6 @@ Public Class GridValidationClass
         InitializeGrid()
     End Sub
 
-    ''' <summary>
-    '''   Gets or sets the height of the Grid Array
-    ''' </summary>
-    ''' <returns>An integer representing the number of vertical spots in the grid</returns>
-    Public Property Height As Integer
-        Get
-            Return _height
-        End Get
-        Set(value As Integer)
-            _height = value
-        End Set
-    End Property
 
     Dim _TimeLastChanged As New DateTime  ' The local variable that stores the most recent timestamp
     ''' <summary>
@@ -89,15 +131,19 @@ Public Class GridValidationClass
         Dim x As Integer
         Dim y As Integer
 
-        ' Assign the height and width properties based on the initial size of the array
-        Width = GridArray.GetUpperBound(0)
-        Height = GridArray.GetUpperBound(1)
+        ' Assign the height and width properties.
+        ' The default size is 10 by 10 of Open space
+        GridArray.Height = 9
+        GridArray.Width = 9
+
+
 
 
         ' Make sure each grid element starts as "Open" (True)
-        For x = 0 To GridArray.GetUpperBound(0)
-            For y = 0 To GridArray.GetUpperBound(1)
-                GridArray(x, y) = gaOPEN
+        For x = 0 To GridArray.Width
+            For y = 0 To GridArray.Height
+                GridArray.GridDictionary.Add(New Point(x, y), gaOPEN)
+
             Next
         Next
 
