@@ -119,8 +119,8 @@ Public Class TestForm1
 
         ' Update the grid display
         Dim mControl() As Control
-        For x = 0 To GridItem1.Width
-            For y = 0 To GridItem1.Height
+        For x = 0 To GridItem1.GridArray.Width
+            For y = 0 To GridItem1.GridArray.Height
                 mControl = TableLayoutPanelControl.Controls.Find("GridLabel" & Trim(CStr(x)) & "," & Trim(CStr(y)), True)
                 mControl(0).Text = GridItem1.GetContents(x, y)
                 'Stop
@@ -133,8 +133,8 @@ Public Class TestForm1
     ''' </summary>
     Private Sub InitializeTableLayoutPanel()
         ' Set the number of horizontal and verticle panels to be the same as the size of the grid
-        TableLayoutPanel1.ColumnCount = GridItem1.Width + 1
-        TableLayoutPanel1.RowCount = GridItem1.Height + 1
+        TableLayoutPanel1.ColumnCount = GridItem1.GridArray.Width + 1
+        TableLayoutPanel1.RowCount = GridItem1.GridArray.Height + 1
 
         Dim x As Integer
         Dim y As Integer
@@ -142,8 +142,8 @@ Public Class TestForm1
         Dim pt As New Point
 
         ' Add a label to each cell
-        For y = 0 To GridItem1.Height
-            For x = 0 To GridItem1.Width
+        For y = 0 To GridItem1.GridArray.Height
+            For x = 0 To GridItem1.GridArray.Width
                 TableLayoutPanel1.Controls.Add(New Label)
                 TableLayoutPanel1.Controls.Item(i).Name = "GridLabel" & Trim(CStr(x)) & "," & Trim(CStr(y)) ' You have to set the name property in order for it to have a key. The key is the name
                 i += 1
@@ -165,18 +165,18 @@ Public Class TestForm1
         Dim y As Integer
 
         ' Add walls to the outsides
-        For x = 0 To gridItem.Width
-            For y = 0 To gridItem.Height
+        For x = 0 To gridItem.GridArray.Width
+            For y = 0 To gridItem.GridArray.Height
                 '  first row
                 '  last row
                 '  left wall
                 '  right wall
                 Debug.Print("Wall Coord: " & CStr(x) & "," & CStr(y))
 
-                If (y = 0 And (x >= 0 And x <= gridItem.Width)) Or
-                   (y = gridItem.Height And (x >= 0 And x <= gridItem.Width)) Or
-                   (x = 0 And (y >= 0 And y <= gridItem.Height)) Or
-                   (x = gridItem.Width And (y >= 0 And y <= gridItem.Height)) Then
+                If (y = 0 And (x >= 0 And x <= gridItem.GridArray.Width)) Or
+                   (y = gridItem.GridArray.Height And (x >= 0 And x <= gridItem.GridArray.Width)) Or
+                   (x = 0 And (y >= 0 And y <= gridItem.GridArray.Height)) Or
+                   (x = gridItem.GridArray.Width And (y >= 0 And y <= gridItem.GridArray.Height)) Then
                     Debug.Print("Wall Generator placement successful: " & CStr(x) & "," & CStr(y) & " " & CStr(gridItem.Add("Wall" & CStr(x) & "," & CStr(y), New Point(x, y))))
                 Else
                     Debug.Print("Wall Generator skipping x,y:" & CStr(x) & " " & CStr(y))

@@ -10,19 +10,31 @@ Public Class GridValidationClass
     ' Start with a 2 dimensional array the size of the (visible?) field
 
     ' Starting the grid as a 10x10
-    Dim GridArray As GridStructure ' value is gaOpen if open, otherwise it's the name of the Object in that spot.
+    Friend GridArray As New GridStructure ' value is gaOpen if open, otherwise it's the name of the Object in that spot.
     ' Instead of being an array, it could just be a collection or dictionary or something, with a key of "x,y"
     ' which could easily be extended to "x,y,z" for example
     ' I think changing this structure to a collection is going to help a lot on size
     ' Replacing the grid with a collection? A dictionary?
-    Dim ThisGrid As GridStructure
+    'Dim ThisGrid As GridStructure
 
     ' The Key is the point on the grid, the string is what is there. The key needs to be unique.... well not really 
     ' because it'll return a collection of objects if it's not...
     ' If nothing is found, then the spot is empty.
     ' I can keep track of the Min and Max spaces that exist to size the entire thing?
-    Private Structure GridStructure
-        Dim GridDictionary As Dictionary(Of Point, String)
+
+    Dim GridDictionary2 As Dictionary(Of Point, String)
+    Public Property GridDictionary As Dictionary(Of Point, String)
+        Get
+            Return GridDictionary2
+        End Get
+        Set(value As Dictionary(Of Point, String))
+            GridDictionary2 = value
+        End Set
+    End Property
+
+
+    Friend Structure GridStructure
+
         Private _minX As Integer
         Private _minY As Integer
         Private _maxX As Integer
@@ -92,8 +104,8 @@ Public Class GridValidationClass
 
 
 
-
-    Const gaOPEN = "Open" ' The string in the grid array if the spot is open.
+    Const gaOPEN As String = "Open" ' The string in the grid array if the spot is open.\
+    Const gaWALL As String = "Wall" ' The basic wall block
 
 
     Public Sub New()
@@ -104,6 +116,7 @@ Public Class GridValidationClass
 
 
     Dim _TimeLastChanged As New DateTime  ' The local variable that stores the most recent timestamp
+
     ''' <summary>
     '''   Gets the last time a change to the grid was effected (UTC).
     '''   The TimeStamp is automatically updated when there is any change to the grid.
@@ -137,13 +150,14 @@ Public Class GridValidationClass
         GridArray.Width = 9
 
 
-
-
+        Dim pt As New Point
         ' Make sure each grid element starts as "Open" (True)
         For x = 0 To GridArray.Width
             For y = 0 To GridArray.Height
-                GridArray.GridDictionary.Add(New Point(x, y), gaOPEN)
+                pt = New Point(x, y)
+                Add(gaOPEN, pt, True)
 
+                'GridArray.GridDictionary.Add()
             Next
         Next
 
@@ -171,8 +185,8 @@ Public Class GridValidationClass
                 ' Object was not found if -1,-1 is returned. Right now, that creates the object, but it should probably fail...
                 Throw New NotImplementedException()
             End If
-            GridArray(currentSpot.X, currentSpot.Y) = gaOPEN
-            GridArray(newSpot.X, newSpot.Y) = whoKey
+            GridArray.GridDictionary.Item(currentSpot) = gaOPEN
+            GridArray.GridDictionary.Item(newSpot) = whoKey
             returnValue = True
             ' Update the TimeStamp to indicate change to the grid
             SetTimeStamp()
@@ -193,7 +207,7 @@ Public Class GridValidationClass
     ''' <returns></returns>
     Friend Function GetContents(x As Integer, y As Integer) As String ' Return type should be the same as the GridArray array type
 
-        Return GridArray(x, y)
+        Return GridArray.GridDictionary.Item(New Point(x, y))
 
         'Throw New NotImplementedException()
     End Function
@@ -216,9 +230,9 @@ Public Class GridValidationClass
 
 
         ' Look through the grid until it finds the whoKey it's looking for
-        For x = 0 To GridArray.GetUpperBound(0)
-            For y = 0 To GridArray.GetUpperBound(1)
-                If (GridArray(x, y) = whoKey) Then
+        For x = 0 To GridArray.Width
+            For y = 0 To GridArray.Height
+                If (GridArray.GridDictionary.Item(New Point(x, y)) = whoKey) Then
 
 
                     returnPoint = New Point(x, y)
@@ -235,7 +249,7 @@ Public Class GridValidationClass
         ' If it errors, say it's closed
 
         Try
-            Return (GridArray(pt.X, pt.Y) = gaOPEN) ' Returns True if it's equal to the Open symbol.
+            Return (GridArray.GridDictionary.Item(pt) = gaOPEN) ' Returns True if it's equal to the Open symbol.
         Catch
             Return False
         End Try
@@ -259,7 +273,8 @@ Public Class GridValidationClass
 
         If (Overwrite Or IsSpaceOpen(newSpot)) Then
             ' The space is open, or Overwrite is enabled. Place the object.
-            GridArray(newSpot.X, newSpot.Y) = whoKey
+
+            GridArray.GridDictionary.Item(newSpot) = whoKey
             returnValue = True
             ' Update the TimeStamp to indicate change to the grid
             SetTimeStamp()
@@ -290,7 +305,7 @@ Public Class GridValidationClass
     ''' </summary>
     ''' <param name="whoKey">The name of the item to remove</param>
     ''' <returns>Returns True if Remove is successful, False if not.</returns>
-    Friend Function RemoveItemByName(whoKey As String) As Boolean
+    Friend Function RemoveItemByName(whoKey As String, Optional ReplaceWithKey As String = gaOPEN) As Boolean
         'Dim x As Integer
         'Dim y As Integer
         Dim pt As New Point
@@ -301,7 +316,7 @@ Public Class GridValidationClass
             ' Nothing was found
             Return False
         Else
-            GridArray(pt.X, pt.Y) = gaOPEN
+            GridArray.GridDictionary.Item(pt) = gaOPEN
             ' Update the TimeStamp to indicate change to the grid
             SetTimeStamp()
             Return True
@@ -314,7 +329,7 @@ Public Class GridValidationClass
     Friend Function RemoveItemByPoint(x As Integer, y As Integer) As Boolean
 
         ' set the passed point to Open, return True because it can't really fail
-        GridArray(x, y) = gaOPEN
+        GridArray.GridDictionary.Item(New Point(x, y)) = gaOPEN
         ' Update the TimeStamp to indicate change to the grid
         SetTimeStamp()
         Return True

@@ -63,8 +63,8 @@ Public Class MainForm
 
         Dim curTile As String
 
-        For x = 0 To DrawGrid.Width
-            For y = 0 To DrawGrid.Height
+        For x = 0 To DrawGrid.GridArray.Width
+            For y = 0 To DrawGrid.GridArray.Height
                 ' Get the current tile and look up what image it is
                 curTile = DrawGrid.GetContents(x, y)
                 TileImageList.Draw(DrawGraphic, x * TileSize.Width, y * TileSize.Height, ImageIndexByName(curTile))
@@ -118,9 +118,11 @@ Public Class MainForm
         ElseIf Strings.Left(curTile, 3) = "Car" Then
             Return "CircleCar"
         Else
-            Stop
+            ' Return the blank white square by default.
+            Return "White"
         End If
         Stop
+
     End Function
 
     ''' <summary>
