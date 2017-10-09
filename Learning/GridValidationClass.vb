@@ -2,7 +2,10 @@
 Option Strict On
 
 
-Public Class GridValidation
+''' <summary>
+'''   Use a grid to detect collisions and keep track of vehicles or other things like walls
+''' </summary>
+Public Class GridValidationClass
     ' Use a grid to detect collisions
     ' Start with a 2 dimensional array the size of the (visible?) field
 
@@ -10,6 +13,7 @@ Public Class GridValidation
     Dim GridArray(9, 5) As String ' value is gaOpen if open, otherwise it's the name of the Object in that spot.
     ' Instead of being an array, it could just be a collection or dictionary or something, with a key of "x,y"
     ' which could easily be extended to "x,y,z" for example
+    ' I think changing this structure to a collection is going to help a lot on size
 
 
     Const gaOPEN = "Open" ' The string in the grid array if the spot is open.
@@ -29,6 +33,13 @@ Public Class GridValidation
     End Property
 
     Private _height As Integer
+
+    Public Sub New()
+        ' This is what runs when you create a new one. 
+        ' Set the initial values for the grid
+        InitializeGrid()
+    End Sub
+
     ''' <summary>
     '''   Gets or sets the height of the Grid Array
     ''' </summary>
@@ -143,7 +154,16 @@ Public Class GridValidation
 
     Friend Function IsSpaceOpen(pt As Point) As Boolean
         ' Takes a point on the grid. Returns True if Open, False if closed
-        Return (GridArray(pt.X, pt.Y) = gaOPEN) ' Returns True if it's equal to the Open symbol.
+        ' By default, say it's closed.
+        ' If it errors, say it's closed
+
+        Try
+            Return (GridArray(pt.X, pt.Y) = gaOPEN) ' Returns True if it's equal to the Open symbol.
+        Catch
+            Return False
+        End Try
+
+        Return False
 
     End Function
 
@@ -184,5 +204,37 @@ Public Class GridValidation
     Friend Function Add(whoKey As String, newSpotX As Integer, newSpotY As Integer, Optional Overwrite As Boolean = False) As Boolean
         ' Overloaded. Hopefully this is how you do it.
         Return Add(whoKey, New Point(newSpotX, newSpotY), Overwrite)
+    End Function
+
+    ''' <summary>
+    '''   Removes the item whoKey from the grid
+    ''' </summary>
+    ''' <param name="whoKey">The name of the item to remove</param>
+    ''' <returns>Returns True if Remove is successful, False if not.</returns>
+    Friend Function RemoveItemByName(whoKey As String) As Boolean
+        'Dim x As Integer
+        'Dim y As Integer
+        Dim pt As New Point
+
+        pt = FindObject(whoKey)
+
+        If pt.IsEmpty Then
+            ' Nothing was found
+            Return False
+        Else
+            GridArray(pt.X, pt.Y) = gaOPEN
+            Return True
+        End If
+
+
+    End Function
+
+
+    Friend Function RemoveItemByPoint(x As Integer, y As Integer) As Boolean
+
+        ' set the passed point to Open, return True because it can't really fail
+        GridArray(x, y) = gaOPEN
+        Return True
+
     End Function
 End Class
