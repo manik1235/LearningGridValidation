@@ -2,12 +2,25 @@
 Option Strict On
 Imports Learning
 
-Public Class Form1
-    Dim GridItem As New GridValidation
+Public Class TestForm1
+    Dim GridItem As New GridValidationClass
+
+    Public Property GridItem1 As GridValidationClass
+        Get
+            Return GridItem
+        End Get
+        Set(value As GridValidationClass)
+            GridItem = value
+        End Set
+    End Property
+
+
+
+
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        GridItem.InitializeGrid()
+        GridItem1.InitializeGrid()
 
         InitializeTableLayoutPanel()
 
@@ -16,7 +29,7 @@ Public Class Form1
 
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Label1.Text = CStr(GridItem.IsSpaceOpen(New Point(CInt(TextBox1.Text), CInt(TextBox2.Text))))
+        Label1.Text = CStr(GridItem1.IsSpaceOpen(New Point(CInt(TextBox1.Text), CInt(TextBox2.Text))))
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -28,7 +41,7 @@ Public Class Form1
         Dim whoKey As String = TextBox7.Text ' This needs to be the name of the object that is being moved.
 
         ' Grid space is open, remove self from spot and move to new spot
-        Label10.Text = CStr(GridItem.MoveTo(whoKey, NewSpot)) ' Return True if move is successful, false if not.
+        Label10.Text = CStr(GridItem1.MoveTo(whoKey, NewSpot)) ' Return True if move is successful, false if not.
 
 
     End Sub
@@ -38,7 +51,7 @@ Public Class Form1
 
         Dim pt As New Point
 
-        pt = GridItem.FindObject(TextBox8.Text)
+        pt = GridItem1.FindObject(TextBox8.Text)
 
         If pt.IsEmpty Then
             TextBox9.Text = TextBox8.Text & " Not Found"
@@ -70,12 +83,28 @@ Public Class Form1
         ' Update the grid display of the primary one
         UpdateGridDisplay(TableLayoutPanel1)
 
+        If CheckBox2.Checked Then
+            ' Only move the thing if the checkbox is checked.
+            MoveRandom(TextBox14.Text)
+        End If
+
+    End Sub
+
+    Private Sub MoveRandom(ItemName As String)
         ' Move Item
         ' Apply the movement updown contrls
         ' Move whatever object is named in the textbox around
-        Debug.Print(TextBox14.Text & ": " & CStr(GridItem.MoveTo(TextBox14.Text, GridItem.FindObject(TextBox14.Text) + New Size(CInt(NumericUpDown1.Value), CInt(NumericUpDown2.Value))))) ' This line gives an error saying it can't cast from point to size, but FindObject returns a point.... why?
+        Dim MoveSucceeded As Boolean
+        MoveSucceeded = GridItem1.MoveTo(ItemName, GridItem1.FindObject(ItemName) + New Size(CInt(NumericUpDown1.Value), CInt(NumericUpDown2.Value))) ' This line gives an error saying it can't cast from point to size, but FindObject returns a point.... why?
+        If MoveSucceeded Then
+            'Don't change anything
+        Else
+            ' The move failed, pick a new random direction
+            Dim rRand As New Random
 
-
+            NumericUpDown1.Value = rRand.Next(-1, 2)
+            NumericUpDown2.Value = rRand.Next(-1, 2)
+        End If
     End Sub
 
     ''' <summary>
@@ -90,10 +119,10 @@ Public Class Form1
 
         ' Update the grid display
         Dim mControl() As Control
-        For x = 0 To GridItem.Width
-            For y = 0 To GridItem.Height
+        For x = 0 To GridItem1.GridArray.Width
+            For y = 0 To GridItem1.GridArray.Height
                 mControl = TableLayoutPanelControl.Controls.Find("GridLabel" & Trim(CStr(x)) & "," & Trim(CStr(y)), True)
-                mControl(0).Text = GridItem.GetContents(x, y)
+                mControl(0).Text = GridItem1.GetContents(x, y)
                 'Stop
             Next
         Next
@@ -104,8 +133,8 @@ Public Class Form1
     ''' </summary>
     Private Sub InitializeTableLayoutPanel()
         ' Set the number of horizontal and verticle panels to be the same as the size of the grid
-        TableLayoutPanel1.ColumnCount = GridItem.Width + 1
-        TableLayoutPanel1.RowCount = GridItem.Height + 1
+        TableLayoutPanel1.ColumnCount = GridItem1.GridArray.Width + 1
+        TableLayoutPanel1.RowCount = GridItem1.GridArray.Height + 1
 
         Dim x As Integer
         Dim y As Integer
@@ -113,8 +142,8 @@ Public Class Form1
         Dim pt As New Point
 
         ' Add a label to each cell
-        For y = 0 To GridItem.Height
-            For x = 0 To GridItem.Width
+        For y = 0 To GridItem1.GridArray.Height
+            For x = 0 To GridItem1.GridArray.Width
                 TableLayoutPanel1.Controls.Add(New Label)
                 TableLayoutPanel1.Controls.Item(i).Name = "GridLabel" & Trim(CStr(x)) & "," & Trim(CStr(y)) ' You have to set the name property in order for it to have a key. The key is the name
                 i += 1
@@ -122,7 +151,7 @@ Public Class Form1
         Next
 
         ' Add features to the map
-        AddGridFeatures(GridItem)
+        AddGridFeatures(GridItem1)
 
     End Sub
 
@@ -130,24 +159,24 @@ Public Class Form1
     '''   Adds stuff to the map
     ''' </summary>
     ''' <param name="gridItem"></param>
-    Private Sub AddGridFeatures(gridItem As GridValidation)
+    Private Sub AddGridFeatures(gridItem As GridValidationClass)
 
         Dim x As Integer
         Dim y As Integer
 
         ' Add walls to the outsides
-        For x = 0 To gridItem.Width
-            For y = 0 To gridItem.Height
+        For x = 0 To gridItem.GridArray.Width
+            For y = 0 To gridItem.GridArray.Height
                 '  first row
                 '  last row
                 '  left wall
                 '  right wall
                 Debug.Print("Wall Coord: " & CStr(x) & "," & CStr(y))
 
-                If (y = 0 And (x >= 0 And x <= gridItem.Width)) Or
-                   (y = gridItem.Height And (x >= 0 And x <= gridItem.Width)) Or
-                   (x = 0 And (y >= 0 And y <= gridItem.Height)) Or
-                   (x = gridItem.Width And (y >= 0 And y <= gridItem.Height)) Then
+                If (y = 0 And (x >= 0 And x <= gridItem.GridArray.Width)) Or
+                   (y = gridItem.GridArray.Height And (x >= 0 And x <= gridItem.GridArray.Width)) Or
+                   (x = 0 And (y >= 0 And y <= gridItem.GridArray.Height)) Or
+                   (x = gridItem.GridArray.Width And (y >= 0 And y <= gridItem.GridArray.Height)) Then
                     Debug.Print("Wall Generator placement successful: " & CStr(x) & "," & CStr(y) & " " & CStr(gridItem.Add("Wall" & CStr(x) & "," & CStr(y), New Point(x, y))))
                 Else
                     Debug.Print("Wall Generator skipping x,y:" & CStr(x) & " " & CStr(y))
@@ -171,7 +200,41 @@ Public Class Form1
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        GridItem.Add(TextBox11.Text, CInt(TextBox13.Text), CInt(TextBox12.Text))
+        GridItem1.Add(TextBox11.Text, CInt(TextBox13.Text), CInt(TextBox12.Text), CheckBox1.Checked)
+    End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        GridItem1.RemoveItemByName(TextBox16.Text)
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        GridItem1.RemoveItemByPoint(CInt(TextBox17.Text), CInt(TextBox18.Text))
+    End Sub
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        'textbox19
+        ' Open the form named in the textbox
+
+        MainForm.Show()
+    End Sub
+
+    Private Sub TextBox19_TextChanged(sender As Object, e As EventArgs) Handles TextBox19.TextChanged
+        Dim testForm As FormCollection
+
+        testForm = Application.OpenForms()
+
+        'GridItemForm = testForm.Item(TextBox19.Text)
+
+        If TextBox19.Text = "MainForm" And Not GridItem1.Equals(MainForm.BackgroundGrid) Then
+            GridItem1 = MainForm.BackgroundGrid
+        ElseIf TextBox19.Text = "TestForm1" And Not GridItem1.Equals(Me.GridItem) Then
+            'Me
+            GridItem1 = Me.GridItem
+        ElseIf Not GridItem1.Equals(Me.GridItem) Then
+            'Default to me
+            GridItem1 = Me.GridItem
+        End If
+
     End Sub
 
 

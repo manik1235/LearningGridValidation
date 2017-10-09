@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Form1
+Partial Class TestForm1
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -24,6 +24,18 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.TextBox19 = New System.Windows.Forms.TextBox()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.TextBox16 = New System.Windows.Forms.TextBox()
+        Me.TextBox17 = New System.Windows.Forms.TextBox()
+        Me.TextBox18 = New System.Windows.Forms.TextBox()
+        Me.Button5 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.TextBox15 = New System.Windows.Forms.TextBox()
         Me.Label17 = New System.Windows.Forms.Label()
@@ -32,7 +44,6 @@ Partial Class Form1
         Me.NumericUpDown2 = New System.Windows.Forms.NumericUpDown()
         Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
         Me.TextBox14 = New System.Windows.Forms.TextBox()
-        Me.Label14 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.TextBox12 = New System.Windows.Forms.TextBox()
@@ -72,6 +83,18 @@ Partial Class Form1
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.CheckBox2)
+        Me.Panel1.Controls.Add(Me.CheckBox1)
+        Me.Panel1.Controls.Add(Me.TextBox19)
+        Me.Panel1.Controls.Add(Me.Button7)
+        Me.Panel1.Controls.Add(Me.Button6)
+        Me.Panel1.Controls.Add(Me.Label11)
+        Me.Panel1.Controls.Add(Me.Label18)
+        Me.Panel1.Controls.Add(Me.Label19)
+        Me.Panel1.Controls.Add(Me.TextBox16)
+        Me.Panel1.Controls.Add(Me.TextBox17)
+        Me.Panel1.Controls.Add(Me.TextBox18)
+        Me.Panel1.Controls.Add(Me.Button5)
         Me.Panel1.Controls.Add(Me.Button4)
         Me.Panel1.Controls.Add(Me.TextBox15)
         Me.Panel1.Controls.Add(Me.Label17)
@@ -80,7 +103,6 @@ Partial Class Form1
         Me.Panel1.Controls.Add(Me.NumericUpDown2)
         Me.Panel1.Controls.Add(Me.NumericUpDown1)
         Me.Panel1.Controls.Add(Me.TextBox14)
-        Me.Panel1.Controls.Add(Me.Label14)
         Me.Panel1.Controls.Add(Me.Label12)
         Me.Panel1.Controls.Add(Me.Label13)
         Me.Panel1.Controls.Add(Me.TextBox12)
@@ -109,10 +131,113 @@ Partial Class Form1
         Me.Panel1.Controls.Add(Me.TextBox1)
         Me.Panel1.Controls.Add(Me.Button2)
         Me.Panel1.Controls.Add(Me.Button1)
-        Me.Panel1.Location = New System.Drawing.Point(8, 440)
+        Me.Panel1.Location = New System.Drawing.Point(12, 12)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(629, 394)
+        Me.Panel1.Size = New System.Drawing.Size(860, 203)
         Me.Panel1.TabIndex = 23
+        '
+        'CheckBox2
+        '
+        Me.CheckBox2.AutoSize = True
+        Me.CheckBox2.Location = New System.Drawing.Point(561, 47)
+        Me.CheckBox2.Name = "CheckBox2"
+        Me.CheckBox2.Size = New System.Drawing.Size(142, 17)
+        Me.CheckBox2.TabIndex = 73
+        Me.CheckBox2.Text = "Name of Object to Move"
+        Me.CheckBox2.UseVisualStyleBackColor = True
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(12, 178)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(168, 17)
+        Me.CheckBox1.TabIndex = 72
+        Me.CheckBox1.Text = "Overwrite current tile Contents"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
+        'TextBox19
+        '
+        Me.TextBox19.Location = New System.Drawing.Point(703, 10)
+        Me.TextBox19.Name = "TextBox19"
+        Me.TextBox19.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox19.TabIndex = 70
+        Me.TextBox19.Text = "MainForm"
+        '
+        'Button7
+        '
+        Me.Button7.Location = New System.Drawing.Point(597, 10)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(75, 23)
+        Me.Button7.TabIndex = 69
+        Me.Button7.Text = "Open Form"
+        Me.Button7.UseVisualStyleBackColor = True
+        '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(597, 157)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(100, 40)
+        Me.Button6.TabIndex = 68
+        Me.Button6.Text = "Remove Object by point"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(760, 154)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(12, 13)
+        Me.Label11.TabIndex = 67
+        Me.Label11.Text = "y"
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(706, 157)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(12, 13)
+        Me.Label18.TabIndex = 66
+        Me.Label18.Text = "x"
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(703, 110)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(69, 13)
+        Me.Label19.TabIndex = 65
+        Me.Label19.Text = "Object Name"
+        '
+        'TextBox16
+        '
+        Me.TextBox16.Location = New System.Drawing.Point(706, 126)
+        Me.TextBox16.Name = "TextBox16"
+        Me.TextBox16.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox16.TabIndex = 64
+        '
+        'TextBox17
+        '
+        Me.TextBox17.Location = New System.Drawing.Point(709, 170)
+        Me.TextBox17.Name = "TextBox17"
+        Me.TextBox17.Size = New System.Drawing.Size(44, 20)
+        Me.TextBox17.TabIndex = 63
+        '
+        'TextBox18
+        '
+        Me.TextBox18.Location = New System.Drawing.Point(755, 170)
+        Me.TextBox18.Name = "TextBox18"
+        Me.TextBox18.Size = New System.Drawing.Size(30, 20)
+        Me.TextBox18.TabIndex = 62
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(597, 112)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(100, 39)
+        Me.Button5.TabIndex = 61
+        Me.Button5.Text = "Remove Object by name"
+        Me.Button5.UseVisualStyleBackColor = True
         '
         'Button4
         '
@@ -142,7 +267,7 @@ Partial Class Form1
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(129, 222)
+        Me.Label15.Location = New System.Drawing.Point(720, 63)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(12, 13)
         Me.Label15.TabIndex = 57
@@ -151,7 +276,7 @@ Partial Class Form1
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(15, 222)
+        Me.Label16.Location = New System.Drawing.Point(606, 63)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(12, 13)
         Me.Label16.TabIndex = 56
@@ -159,7 +284,7 @@ Partial Class Form1
         '
         'NumericUpDown2
         '
-        Me.NumericUpDown2.Location = New System.Drawing.Point(121, 238)
+        Me.NumericUpDown2.Location = New System.Drawing.Point(712, 79)
         Me.NumericUpDown2.Maximum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.NumericUpDown2.Minimum = New Decimal(New Integer() {1, 0, 0, -2147483648})
         Me.NumericUpDown2.Name = "NumericUpDown2"
@@ -168,7 +293,7 @@ Partial Class Form1
         '
         'NumericUpDown1
         '
-        Me.NumericUpDown1.Location = New System.Drawing.Point(14, 238)
+        Me.NumericUpDown1.Location = New System.Drawing.Point(605, 79)
         Me.NumericUpDown1.Maximum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.NumericUpDown1.Minimum = New Decimal(New Integer() {1, 0, 0, -2147483648})
         Me.NumericUpDown1.Name = "NumericUpDown1"
@@ -177,20 +302,11 @@ Partial Class Form1
         '
         'TextBox14
         '
-        Me.TextBox14.Location = New System.Drawing.Point(118, 203)
+        Me.TextBox14.Location = New System.Drawing.Point(709, 44)
         Me.TextBox14.Name = "TextBox14"
         Me.TextBox14.Size = New System.Drawing.Size(100, 20)
         Me.TextBox14.TabIndex = 53
         Me.TextBox14.Text = "Car#1"
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(3, 206)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(112, 13)
-        Me.Label14.TabIndex = 52
-        Me.Label14.Text = "Name of Item to Move"
         '
         'Label12
         '
@@ -234,7 +350,7 @@ Partial Class Form1
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(294, 114)
+        Me.Label10.Location = New System.Drawing.Point(463, 10)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(83, 13)
         Me.Label10.TabIndex = 45
@@ -243,7 +359,7 @@ Partial Class Form1
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(362, 198)
+        Me.Label8.Location = New System.Drawing.Point(362, 154)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(12, 13)
         Me.Label8.TabIndex = 44
@@ -252,7 +368,7 @@ Partial Class Form1
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(248, 198)
+        Me.Label9.Location = New System.Drawing.Point(248, 157)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(12, 13)
         Me.Label9.TabIndex = 43
@@ -261,7 +377,7 @@ Partial Class Form1
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(354, 156)
+        Me.Label7.Location = New System.Drawing.Point(354, 112)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(69, 13)
         Me.Label7.TabIndex = 42
@@ -269,28 +385,28 @@ Partial Class Form1
         '
         'TextBox8
         '
-        Me.TextBox8.Location = New System.Drawing.Point(357, 172)
+        Me.TextBox8.Location = New System.Drawing.Point(357, 128)
         Me.TextBox8.Name = "TextBox8"
         Me.TextBox8.Size = New System.Drawing.Size(100, 20)
         Me.TextBox8.TabIndex = 41
         '
         'TextBox9
         '
-        Me.TextBox9.Location = New System.Drawing.Point(251, 214)
+        Me.TextBox9.Location = New System.Drawing.Point(251, 170)
         Me.TextBox9.Name = "TextBox9"
         Me.TextBox9.Size = New System.Drawing.Size(100, 20)
         Me.TextBox9.TabIndex = 40
         '
         'TextBox10
         '
-        Me.TextBox10.Location = New System.Drawing.Point(357, 214)
+        Me.TextBox10.Location = New System.Drawing.Point(357, 170)
         Me.TextBox10.Name = "TextBox10"
         Me.TextBox10.Size = New System.Drawing.Size(100, 20)
         Me.TextBox10.TabIndex = 39
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(251, 172)
+        Me.Button3.Location = New System.Drawing.Point(251, 128)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(75, 23)
         Me.Button3.TabIndex = 38
@@ -421,24 +537,26 @@ Partial Class Form1
         'Panel2
         '
         Me.Panel2.Controls.Add(Me.TableLayoutPanel1)
-        Me.Panel2.Location = New System.Drawing.Point(8, 12)
+        Me.Panel2.Location = New System.Drawing.Point(12, 221)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1281, 422)
+        Me.Panel2.Size = New System.Drawing.Size(1228, 421)
         Me.Panel2.TabIndex = 24
         '
         'TableLayoutPanel1
         '
         Me.TableLayoutPanel1.AutoSize = True
         Me.TableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.TableLayoutPanel1.ColumnCount = 2
+        Me.TableLayoutPanel1.ColumnCount = 3
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(48, 44)
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35.0!))
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(4, 3)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 2
+        Me.TableLayoutPanel1.RowCount = 3
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(0, 0)
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(35, 20)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'Timer1
@@ -446,14 +564,14 @@ Partial Class Form1
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = Global.Learning.My.MySettings.Default.Timer1AppSetting
         '
-        'Form1
+        'TestForm1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1354, 733)
+        Me.ClientSize = New System.Drawing.Size(1354, 654)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
-        Me.Name = "Form1"
+        Me.Name = "TestForm1"
         Me.Text = "Form1"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
@@ -497,7 +615,6 @@ Partial Class Form1
     Friend WithEvents NumericUpDown2 As NumericUpDown
     Friend WithEvents NumericUpDown1 As NumericUpDown
     Friend WithEvents TextBox14 As TextBox
-    Friend WithEvents Label14 As Label
     Friend WithEvents Label12 As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents TextBox12 As TextBox
@@ -506,4 +623,16 @@ Partial Class Form1
     Friend WithEvents TextBox15 As TextBox
     Friend WithEvents Label17 As Label
     Friend WithEvents Button4 As Button
+    Friend WithEvents Label11 As Label
+    Friend WithEvents Label18 As Label
+    Friend WithEvents Label19 As Label
+    Friend WithEvents TextBox16 As TextBox
+    Friend WithEvents TextBox17 As TextBox
+    Friend WithEvents TextBox18 As TextBox
+    Friend WithEvents Button5 As Button
+    Friend WithEvents Button6 As Button
+    Friend WithEvents TextBox19 As TextBox
+    Friend WithEvents Button7 As Button
+    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents CheckBox2 As CheckBox
 End Class
