@@ -22,19 +22,12 @@ Public Class GridValidationClass
     ' If nothing is found, then the spot is empty.
     ' I can keep track of the Min and Max spaces that exist to size the entire thing?
 
-    Dim GridDictionary2 As Dictionary(Of Point, String)
-    Public Property GridDictionary As Dictionary(Of Point, String)
-        Get
-            Return GridDictionary2
-        End Get
-        Set(value As Dictionary(Of Point, String))
-            GridDictionary2 = value
-        End Set
-    End Property
 
 
-    Friend Structure GridStructure
 
+
+    Friend Class GridStructure
+        Private _gridDictionary As Dictionary(Of Point, String)
         Private _minX As Integer
         Private _minY As Integer
         Private _maxX As Integer
@@ -100,7 +93,16 @@ Public Class GridValidationClass
                 _maxY = MinY + Height
             End Set
         End Property
-    End Structure
+
+        Friend Property GridDictionary As Dictionary(Of Point, String)
+            Get
+                Return _gridDictionary
+            End Get
+            Set(value As Dictionary(Of Point, String))
+                _gridDictionary = value
+            End Set
+        End Property
+    End Class
 
 
 
